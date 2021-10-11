@@ -15,7 +15,7 @@ from sklearn.pipeline import make_pipeline
 np.random.seed(2018)
 n_boostraps = 100
 maxdegree = 14
-N = 50 # number of samples
+N = 20 # number of samples
 e = 0 # noise weight
 
 x = np.linspace(0, 1, N)
@@ -36,14 +36,13 @@ for degree in range(maxdegree):
     X = create_X(x, y, degree) # Creates the design matrix
     X_train, X_test, z_train, z_test = train_test_split(X, z, 
         test_size=0.2, random_state=2021)
-    z_pred = np.empty((z_test.shape[0], n_boostraps)) #??
-    print(z_test.shape)
-    print(z_pred.shape)
+    z_pred = np.empty((z_test.shape[0], z_test.shape[1], n_boostraps))
     for i in range(n_boostraps):
         X_, z_ = resample(X_train, z_train)
         beta = OLS(X_, z_)
-        z_pred[:, i] = (X_test @ beta) # ??
+        z_pred[:, :, i] = (X_test @ beta)
 
+    print(z_pred.shape)
     polydegree[degree] = degree
     error[degree] = np.mean( np.mean((z_test - z_pred)**2, axis=1, keepdims=True) )
     bias[degree] = np.mean( (z_test - np.mean(z_pred, axis=1, keepdims=True))**2 )
