@@ -1,0 +1,44 @@
+\documentclass[12pt, letterpaper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\begin{document}
+\title{FYS-STK4155 Project 1}
+\author{Espen Lønes}
+\date{\today}
+\maketitle
+\ \\
+Exercise 1:\\
+\includegraphics[scale=0.7]{"Confidence_beta.png"}\\
+\newpage
+\ \\
+Exercise 2:\\
+\ \\
+We have:
+$$
+C(\mathbf{X}, \beta) = \frac{1}{n} \sum_{i=0}^{n-1} (y_i - \tilde{y_i})^2
+= \mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
+$$
+To Derive the wanted equation we use the fact that the variance of $\mathbf{y}$ and $\mathbf{\epsilon}$ are both $\sigma^2$. The mean of $\mathbf{\epsilon}$ is zero and f is not stochastic for $\mathbf{\tilde{y}}$. And using the more compact notation of expected value, we get.
+$$
+\mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
+=
+\mathbb{E}[(\mathbf{f} + \mathbf{\epsilon} - \mathbf{\tilde{y}})^2]
+$$
+Then add and subtract $\mathbb{E}[\mathbf{\tilde{y}}]$
+$$
+\mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
+=
+\mathbb{E}[(\mathbf{f} + \mathbf{\epsilon} - \mathbf{\tilde{y}} + \mathbb{E}[\mathbf{\tilde{y}}] - \mathbb{E}[\mathbf{\tilde{y}}])^2]
+$$
+Then we use the expectation values mentioned above and get.
+$$
+\mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
+=
+\mathbb{E}[(\mathbf{y} - \mathbb{E}[\mathbf{\tilde{y}}])^2]
++ Var[\mathbf{\tilde{y}}]
++ \sigma^2
+$$
+\ \\
+The tree terms in this equation represent, in order. The square of the bias of the model, the variance of the model and lastly the variance of the error.   
+\end{document}

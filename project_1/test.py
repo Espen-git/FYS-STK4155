@@ -1,55 +1,104 @@
+from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
-from sklearn.linear_model import LinearRegression, Ridge, Lasso
-from sklearn.preprocessing import PolynomialFeatures
+from random import random, seed
+from franke import FrankeFunction
 from sklearn.model_selection import train_test_split
-from sklearn.pipeline import make_pipeline
-from sklearn.utils import resample
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 
-np.random.seed(2018)
+# From week35 slides
+def create_X(x, y, n):
+	if len(x.shape) > 1:
+		x = np.ravel(x)
+		y = np.ravel(y)
 
-n = 500
-n_boostraps = 100
-degree = 18  # A quite high value, just to show.
-noise = 0.1
+	N = len(x)
+	l = int((n+1)*(n+2)/2) # Number of elements in beta
+	X = np.ones((N,l))
 
-# Make data set.
-x = np.linspace(-1, 3, n).reshape(-1, 1)
-y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2) + np.random.normal(0, 0.1, x.shape)
+	for i in range(1,n+1):
+		q = int((i)*(i+1)/2)
+		for k in range(i+1):
+			X[:,q+k] = (x**(i-k))*(y**k)
+            
+	return X 
 
-# Hold out some test data that is never used in training.
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-print(y_test.shape)
-# Combine x transformation and model into one operation.
-# Not neccesary, but convenient.
-model = make_pipeline(PolynomialFeatures(degree=degree), LinearRegression(fit_intercept=False))
+def OLS(X, z):
+    """
+    x: Data matrix
+    z: Target values
 
-# The following (m x n_bootstraps) matrix holds the column vectors y_pred
-# for each bootstrap iteration.
-y_pred = np.empty((y_test.shape[0], n_boostraps))
-print(y_pred.shape)
-for i in range(n_boostraps):
-    x_, y_ = resample(x_train, y_train)
+    beta: Solution to OLS
+    """
+    beta = np.linalg.pinv(X.T.dot(X)).dot(X.T).dot(z)
+    return beta
 
-    # Evaluate the new model on the same test data each time.
-    y_pred[:, i] = model.fit(x_, y_).predict(x_test).ravel()
+if __name__ == "__main__":
+    n = 5 # polynomial degree
+    N = 100 # number of samples
+    e = 0.1 # noise weight
+    show_plot = False
+    maxdegree = 20
+    error_training = np.zeros(maxdegree)
+    error_test = np.zeros(maxdegree)
 
-# Note: Expectations and variances taken w.r.t. different training
-# data sets, hence the axis=1. Subsequent means are taken across the test data
-# set in order to obtain a total value, but before this we have error/bias/variance
-# calculated per data point in the test set.
-# Note 2: The use of keepdims=True is important in the calculation of bias as this 
-# maintains the column vector form. Dropping this yields very unexpected results.
-error = np.mean( np.mean((y_test - y_pred)**2, axis=1, keepdims=True) )
-bias = np.mean( (y_test - np.mean(y_pred, axis=1, keepdims=True))**2 )
-variance = np.mean( np.var(y_pred, axis=1, keepdims=True) )
-print('Error:', error)
-print('Bias^2:', bias)
-print('Var:', variance)
-print('{} >= {} + {} = {}'.format(error, bias, variance, bias+variance))
+    #for n in range(maxdegree):
+    x = np.linspace(0, 1, N)
+    y = np.linspace(0, 1, N)
+    xx, yy = np.meshgrid(x, y)
 
-plt.plot(x[::5, :], y[::5, :], label='f(x)')
-plt.scatter(x_test, y_test, label='Data points')
-plt.scatter(x_test, np.mean(y_pred, axis=1), label='Pred')
-plt.legend()
-#plt.show()
+    z = FrankeFunction(xx, yy) # True values
+    # add noise
+    np.random.seed(2021)
+    noise = np.random.randn(N,N) # NxN matrix of normaly distributed noise
+    z = z + e*noise
+
+    X = create_X(x, y, n) # Creates the design matrix
+    X_train, X_test, z_train, z_test = train_test_split(X, z, 
+        test_size=0.2, random_state=2021)
+
+    
+    scaler = StandardScaler() # Chose scaling method
+    scaler.fit(X_train) # fit scaler
+    X_train = scaler.transform(X_train) # Scale training data
+    X_test = scaler.transform(X_test) # Scale test data 
+    # Then the same for targets
+    scaler = StandardScaler()
+    scaler.fit(z_train)
+    z_train = scaler.transform(z_train)
+    z_test = scaler.transform(z_test)
+    
+    
+    beta = OLS(X_train, z_train)
+    ztilde = X_train @ beta
+    zpredict = X_test @ beta
+
+    # Compute confidence intervals for beta
+    mean_beta = np.mean(beta, 1) # Mean value over beta_i
+    std_beta = np.std(beta, 1) # Standard deviation over beta_i
+    z_confidence = 1.96 # Confidence of 95%
+
+    confidence = np.zeros([len(beta)])
+    for i in range(len(beta)):
+        confidence[i] = (z_confidence * std_beta[i]) / np.sqrt(N)
+
+    if show_plot:
+        plt.errorbar(range(len(beta)), mean_beta, yerr=confidence, fmt='.')
+        plt.xlabel('beta_i')
+        plt.ylabel('mean')
+        plt.title('Confidence intervals of beta_i')
+        plt.show()
+
+    # MSE
+    # Scikit-learns MSE function
+    mse_train = mean_squared_error(z_train, ztilde)
+    mse_test = mean_squared_error(z_test, zpredict)
+
+    #R^2
+    # Scikit-learns r2 function
+    r2_train = r2_score(z_train, ztilde)
+    r2_test = r2_score(z_test, zpredict)
