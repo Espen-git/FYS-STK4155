@@ -30,7 +30,7 @@ mse_test = np.zeros(maxdegree)
 mse_training = np.zeros(maxdegree)
 bias = np.zeros(maxdegree)
 variance = np.zeros(maxdegree)
-polydegree = np.zeros(maxdegree)
+polydegree = []
 
 z = FrankeFunction(xx, yy) # True values
 # add noise
@@ -47,7 +47,7 @@ scaler.fit(x_and_y_test)
 # Scale test data. will scale traning data later
 x_and_y_test_scaled = scaler.transform(x_and_y_test) 
 
-for degree in range(maxdegree):
+for degree in range(1, maxdegree):
     """
     # Scaling data
     scaler = StandardScaler() # Chose scaling method
@@ -81,7 +81,7 @@ for degree in range(maxdegree):
         testing_error.append(MSE(z_test, z_predict_test))
         training_error.append(MSE(z_, z_predict_train))
 
-    polydegree[degree] = degree
+    polydegree.append(degree)
     mse_test[degree] = np.mean(testing_error)
     mse_training[degree] = np.mean(training_error)
     bias[degree] = np.mean( (z_test.reshape(z_test.shape[0],1) - np.mean(z_predict, axis=1, keepdims=True))**2 )
@@ -97,7 +97,7 @@ plt.plot(polydegree, mse_test, label='Test error')
 plt.plot(polydegree, mse_training, label='Traning error')
 plt.plot(polydegree, bias, label="Bias", linestyle="--")
 plt.plot(polydegree, variance, label="Variance", linestyle="--")
-plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
+#plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
 plt.xlabel("polynomial degree")
 plt.legend()
 plt.show()

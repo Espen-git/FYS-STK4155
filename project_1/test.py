@@ -27,15 +27,18 @@ def cross_validation_split(dataset, folds=10):
     return dataset_split
 
 # Make data set
-n = 40
-x,y = xy_data_2(n)
-z = FrankeFunction_noisy(x,y)
+N = 40
+x = np.linspace(0, 1, N)
+y = np.linspace(0, 1, N)
+xx, yy = np.meshgrid(x, y)
+z = FrankeFunction(xx, yy) # True values
+# add noise
+e = 0.1
+noise = np.random.randn(N,N) # NxN matrix of normaly distributed noise
+z = z + e*noise
 
-# number of k-folds
-k_folds = 10
-
-# Polynomial fit
-polynomial = 10
+k_folds = 10 # number of k-folds
+maxdegree = 10
 
 # Stacking x and y 
 x_and_y=np.hstack((x.ravel().reshape(x.ravel().shape[0],1),y.ravel().reshape(y.ravel().shape[0],1)))
@@ -46,25 +49,18 @@ scaler.fit(x_and_y)
 x_and_y_scaled = scaler.transform(x_and_y)
 
 # Make list and arrays to store results
-all_r2_ols_cv=[]
-mean_r2_ols_cv=[]
-error = np.zeros(polynomial)
-bias = np.zeros(polynomial)
-variance = np.zeros(polynomial)
-polydegree = np.zeros(polynomial)
-train_error = np.zeros(polynomial)
+test_error = np.zeros(maxdegree)
+train_error = np.zeros(maxdegree)
+bias = np.zeros(maxdegree)
+variance = np.zeros(maxdegree)
+polydegree = np.zeros(maxdegree)
 
-
-for poly in range(polynomial):
-    # Make list and arrays to store results
-    r2_ = []
-    
-    #Make array to store predictions
-    pred_test = np.empty((int(z.ravel().shape[0]*(1/k_folds)), k_folds))
-    pred_train = np.empty((int(z.ravel().shape[0]*(1-(1/k_folds))), k_folds))
+for degree in range(maxdegree):
+    z_predict = np.empty((int(z.ravel().shape[0]*(1/k_folds)), k_folds))
+    z_tilde = np.empty((int(z.ravel().shape[0]*(1-(1/k_folds))), k_folds))
     
     # Stacking x , y (X) and z 
-    data = np.hstack((x_and_y_scaled,z.ravel().reshape(n**2,1)))
+    data = np.hstack((x_and_y_scaled,z.ravel().reshape(N**2,1)))
     
     #Make folds 
     folds = cross_validation_split(data, k_folds)
@@ -82,39 +78,37 @@ for poly in range(polynomial):
         xy_test = test_data[:,0:-1]
         
         # Fit training data
-        X_train = make_X_matrix(xy_train.T[0],xy_train.T[1],poly+1)
-        beta = calc_beta(X_train, z_train)
+        X_train = create_X(xy_train.T[0],xy_train.T[1],degree)
+        X_test = create_X(xy_test.T[0],xy_test.T[1],degree)
+        beta = OLS(X_train, z_train)
         
         # Do prediction on test and train data
-        z_pred_test=predict(xy_test.T[0],xy_test.T[1],poly+1,beta)
-        z_pred_train=predict(xy_train.T[0],xy_train.T[1],poly+1,beta)
-        pred_test[:,i]=predict(xy_test.T[0],xy_test.T[1],poly+1,beta)
-        pred_train[:,i]=predict(xy_train.T[0],xy_train.T[1],poly+1,beta)
+        z_pred_test = (X_test @ beta)
+        z_pred_train = (X_train @ beta)
+        z_predict[:,i] = (X_test @ beta)
+        z_tilde[:,i] = (X_train @ beta)
         
-        # Append results to arrays and lists
-        r2_.append(r2_score(z_test,z_pred_test))
-        
-    train_error[poly] = np.mean( np.mean((z_train.reshape(z_train.shape[0],1) - pred_train)**2, axis=1, keepdims=True) )   
-    error[poly] = np.mean( np.mean((z_test.reshape(z_test.shape[0],1) - pred_test)**2, axis=1, keepdims=True) )
-    bias[poly] = np.mean( (z_test.reshape(z_test.shape[0],1) - np.mean(pred_test, axis=1, keepdims=True))**2 )
-    variance[poly] = np.mean( np.var(pred_test, axis=1, keepdims=True) )
+    train_error[degree] = np.mean( np.mean((z_train.reshape(z_train.shape[0],1) - z_tilde)**2, axis=1, keepdims=True) )   
+    test_error[degree] = np.mean( np.mean((z_test.reshape(z_test.shape[0],1) - z_predict)**2, axis=1, keepdims=True) )
+    bias[degree] = np.mean( (z_test.reshape(z_test.shape[0],1) - np.mean(z_predict, axis=1, keepdims=True))**2 )
+    variance[degree] = np.mean( np.var(z_predict, axis=1, keepdims=True) )
 
-    print('Polynomial degree:', poly+1)
-    print('Error:', error[poly])
-    print('Bias^2:', bias[poly])
-    print('Var:', variance[poly])
-    print('{} >= {} + {} = {}'.format(error[poly], bias[poly], variance[poly], bias[poly]+variance[poly]))
+    print('Polynomial degree:', degree)
+    print('Error:', test_error[degree])
+    print('Bias^2:', bias[degree])
+    print('Var:', variance[degree])
+    print('{} >= {} + {} = {}'.format(test_error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
         
     #plotting prediction based on all data     
-    z_pred_for_plot = predict(x_and_y_scaled.T[0],x_and_y_scaled.T[1],poly+1,beta)
+    z_pred_for_plot = predict(x_and_y_scaled.T[0],x_and_y_scaled.T[1],degree,beta)
     fig = plt.figure(figsize=(32,12))
     ax = fig.gca(projection ='3d')
-    surf = ax.plot_surface(x,y,z_pred_for_plot.reshape(n,n),cmap=cm.coolwarm, linewidth = 0, antialiased=False)
+    surf = ax.plot_surface(x,y,z_pred_for_plot.reshape(N,N),cmap=cm.coolwarm, linewidth = 0, antialiased=False)
     ax.set_zlim(-0.10,1.40)
     ax.zaxis.set_major_locator(LinearLocator(10))
     ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
     fig.colorbar(surf,shrink=0.5, aspect=5)
-    fig.suptitle("A {} degree polynomial fit of Franke function using OLS and K-fold crossval".format(poly+1) ,fontsize="40", color = "black")
+    fig.suptitle("A {} degree maxdegree fit of Franke function using OLS and K-fold crossval".format(degree) ,fontsize="40", color = "black")
     fig.show()
         
     all_r2_ols_cv.append(r2_)
