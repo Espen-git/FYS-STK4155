@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.4)  14 OCT 2021 21:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.4)  14 OCT 2021 23:29
 entering extended mode
 **./Report.tex
 (Report.tex
@@ -168,34 +168,205 @@ Package pdftex.def Info: images/Confidence_beta.png  used on input line 13.
 
 {C:/Users/espen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/Co
 nfidence_beta.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 16--20
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
 
  []
 
-[2] (Report.aux) ) 
+<images/ex2_errors.png, id=10, 925.056pt x 462.528pt>
+File: images/ex2_errors.png Graphic file (type png)
+<use images/ex2_errors.png>
+Package pdftex.def Info: images/ex2_errors.png  used on input line 26.
+(pdftex.def)             Requested size: 462.52687pt x 231.26343pt.
+
+Overfull \hbox (72.52687pt too wide) in paragraph at lines 24--32
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--32
+
+ []
+
+[2 <./images/ex2_errors.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--68
+
+ []
+
+[3]
+<images/ex2_bias_variance.png, id=27, 925.056pt x 462.528pt>
+File: images/ex2_bias_variance.png Graphic file (type png)
+<use images/ex2_bias_variance.png>
+Package pdftex.def Info: images/ex2_bias_variance.png  used on input line 71.
+(pdftex.def)             Requested size: 462.52687pt x 231.26343pt.
+
+Overfull \hbox (72.52687pt too wide) in paragraph at lines 69--73
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--73
+
+ []
+
+[4 <./images/ex2_bias_variance.png>]
+<images/ex3_errors.png, id=32, 925.056pt x 462.528pt>
+File: images/ex3_errors.png Graphic file (type png)
+<use images/ex3_errors.png>
+Package pdftex.def Info: images/ex3_errors.png  used on input line 78.
+(pdftex.def)             Requested size: 462.52687pt x 231.26343pt.
+<images/ex3_bias_variance.png, id=33, 925.056pt x 462.528pt>
+File: images/ex3_bias_variance.png Graphic file (type png)
+<use images/ex3_bias_variance.png>
+Package pdftex.def Info: images/ex3_bias_variance.png  used on input line 80.
+(pdftex.def)             Requested size: 462.52687pt x 231.26343pt.
+<images/ex4_testerror_bootstrap.png, id=34, 462.528pt x 346.896pt>
+File: images/ex4_testerror_bootstrap.png Graphic file (type png)
+<use images/ex4_testerror_bootstrap.png>
+Package pdftex.def Info: images/ex4_testerror_bootstrap.png  used on input line
+ 87.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+<images/ex4_traningerror_bootstrap.png, id=35, 462.528pt x 346.896pt>
+File: images/ex4_traningerror_bootstrap.png Graphic file (type png)
+<use images/ex4_traningerror_bootstrap.png>
+Package pdftex.def Info: images/ex4_traningerror_bootstrap.png  used on input l
+ine 89.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+<images/ex4_testerror_cv.png, id=36, 462.528pt x 346.896pt>
+File: images/ex4_testerror_cv.png Graphic file (type png)
+<use images/ex4_testerror_cv.png>
+Package pdftex.def Info: images/ex4_testerror_cv.png  used on input line 91.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+<images/ex4_traningerror_cv.png, id=37, 462.528pt x 346.896pt>
+File: images/ex4_traningerror_cv.png Graphic file (type png)
+<use images/ex4_traningerror_cv.png>
+Package pdftex.def Info: images/ex4_traningerror_cv.png  used on input line 93.
+
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--98
+
+ []
+
+
+Overfull \hbox (72.52687pt too wide) in paragraph at lines 74--98
+[] 
+ []
+
+
+Overfull \hbox (72.52687pt too wide) in paragraph at lines 74--98
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--98
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./images/ex3_errors.png> <./images/ex3_bias_variance.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./images/ex4_testerror_bootstrap.png> <./images/ex4_traningerror_bootstrap
+.png>]
+[7 <./images/ex4_testerror_cv.png> <./images/ex4_traningerror_cv.png>]
+<images/ex5_testerror_bootstrap.png, id=54, 462.528pt x 346.896pt>
+File: images/ex5_testerror_bootstrap.png Graphic file (type png)
+<use images/ex5_testerror_bootstrap.png>
+Package pdftex.def Info: images/ex5_testerror_bootstrap.png  used on input line
+ 102.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+<images/ex5_traningerror_bootstrap.png, id=55, 462.528pt x 346.896pt>
+File: images/ex5_traningerror_bootstrap.png Graphic file (type png)
+<use images/ex5_traningerror_bootstrap.png>
+Package pdftex.def Info: images/ex5_traningerror_bootstrap.png  used on input l
+ine 104.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--105
+
+ []
+
+[8 <./images/ex5_testerror_bootstrap.png> <./images/ex5_traningerror_bootstrap.
+png>]
+<images/ex5_testerror_cv.png, id=61, 462.528pt x 346.896pt>
+File: images/ex5_testerror_cv.png Graphic file (type png)
+<use images/ex5_testerror_cv.png>
+Package pdftex.def Info: images/ex5_testerror_cv.png  used on input line 108.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+<images/ex5_traningerror_cv.png, id=62, 462.528pt x 346.896pt>
+File: images/ex5_traningerror_cv.png Graphic file (type png)
+<use images/ex5_traningerror_cv.png>
+Package pdftex.def Info: images/ex5_traningerror_cv.png  used on input line 110
+.
+(pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--112
+
+ []
+
+[9 <./images/ex5_testerror_cv.png> <./images/ex5_traningerror_cv.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 113--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--120
+
+ []
+
+[10] (Report.aux) ) 
 Here is how much of TeX's memory you used:
- 1653 strings out of 492484
- 24689 string characters out of 3121602
+ 1739 strings out of 492484
+ 27188 string characters out of 3121602
  86235 words of memory out of 3000000
- 5984 multiletter control sequences out of 15000+200000
- 12111 words of font info for 47 fonts, out of 3000000 for 9000
+ 6057 multiletter control sequences out of 15000+200000
+ 12280 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,32p,298b,192s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/espen/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/espen/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/
-espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/espen/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/espen/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report.pdf (2 pages, 103182 bytes).
+ 55i,6n,32p,530b,192s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/espen/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/espen/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users
+/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.p
+fb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr17.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/espen/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/espen/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/espen
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.p
+fb>
+Output written on Report.pdf (10 pages, 1776510 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

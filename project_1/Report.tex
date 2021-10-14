@@ -14,13 +14,27 @@ Exercise 1:\\
 We see that the betas corresponding to lower degree parameters are larger in absolute value. Telling us these parameters are more important according to the model. But these also have the largest uncertainty. 
 \newpage
 \ \\
-Exercise 2:\\
+Output from ex1.py:\\
+\begin{verbatim}
+MSE train: 0.011979138954366192
+MSE test: 0.012656233563893443
+R2 train:0.8736114124595407
+R2 test:0.8483730829731215
+\end{verbatim}
 \ \\
+Exercise 2:\\
+\includegraphics[scale=0.5]{"ex2_errors.png"}\\
+The test error indicates that for low polynomial degrees we probably have high bias compared to higher polynomial degrees.\\
+\ \\
+\ \\
+As for the equation.\\
 We have:
 $$
 C(\mathbf{X}, \beta) = \frac{1}{n} \sum_{i=0}^{n-1} (y_i - \tilde{y_i})^2
 = \mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
 $$
+\newpage
+\ \\
 To Derive the wanted equation we use the fact that the variance of $\mathbf{y}$ and $\mathbf{\epsilon}$ are both $\sigma^2$. The mean of $\mathbf{\epsilon}$ is zero and f is not stochastic for $\mathbf{\tilde{y}}$. And using the more compact notation of expected value, we get.
 $$
 \mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
@@ -42,5 +56,65 @@ $$
 + \sigma^2
 $$
 \ \\
-The tree terms in this equation represent, in order. The square of the bias of the model, the variance of the model and lastly the variance of the error.   
+$$
+\mathbb{E}[(\mathbf{y} - \mathbf{\tilde{y}})^2]
+= 
+\frac{1}{n} \sum_i(f_i - \mathbb{E}[\mathbf{\tilde{y}}])^2
++ \frac{1}{n} \sum_i(\tilde{y_i} - \mathbb{E}[\mathbf{\tilde{y}}])^2
++ \sigma^2
+$$
+\ \\
+The tree terms in this equation represent, in order. The bias of the model, the variance of the model and lastly the variance of the error.\\
+\newpage
+\ \\
+Now for the bias-variance trade-off\\
+\includegraphics[scale=0.5]{"ex2_bias_variance.png"}\\
+We see as expected that for increasing polynomial complexity we go from, high bias and low variance, to low bias and high variance. If we had used more points in the training data we would get more accurate values for the bias and variance (and error). The same if we used more bootstraps resamples. But for bootstrap resamples we are just getting closer to the true values for the samples we have. But if we generate more data from the franke function we get closer to the actual values for the franke function.\\
+\newpage
+\ \\
+Exercise 3:\\
+\ \\
+Cross-validation MSE:\\
+\includegraphics[scale=0.5]{"ex3_errors.png"}\\
+Cross-validation Bias-Variance:\\
+\includegraphics[scale=0.5]{"ex3_bias_variance.png"}\\
+\ \
+We see that the errors stay relatively constant and about 10 times higher than for bootstrap. This shows that cross-validation does no work well for this problem. We see similar effects with the bias.\\
+\ \\
+\ \\
+Exercise 4:\\
+Test error bootstrap:\\
+\includegraphics[scale=0.6]{"ex4_testerror_bootstrap.png"}\\
+Train error bootstrap:\\
+\includegraphics[scale=0.6]{"ex4_traningerror_bootstrap.png"}\\
+Test error cross-validation:\\
+\includegraphics[scale=0.6]{"ex4_testerror_cv.png"}\\
+Train error cross-validation:\\
+\includegraphics[scale=0.6]{"ex4_traningerror_cv.png"}\\
+We see much the same as for OLS in the polynomial degree direction.\\
+As for the lambdas we see that it works best for lambda close to 0. Which is the same as doing normal OLS.\\
+\ \\
+(I did also make plots for bias and variance, but did not include them in the report as the task does not ask fro them. If interested look in the images folder.)
+\newpage
+\ \\
+Exercise 5:\\
+Test error bootstrap:\\
+\includegraphics[scale=0.6]{"ex5_testerror_bootstrap.png"}\\
+Train error bootstrap:\\
+\includegraphics[scale=0.6]{"ex5_traningerror_bootstrap.png"}\\
+\newpage
+\ \\
+Test error cross-validation:\\
+\includegraphics[scale=0.6]{"ex5_testerror_cv.png"}\\
+Train error cross-validation:\\
+\includegraphics[scale=0.6]{"ex5_traningerror_cv.png"}\\
+We have a similar result as fro exercise 4. Where best result is fro small lambdas, (i think something went wrong with test error cross-validation, should probably be flipped). But here the polynomial degree seems to have no effect on the error.\\ 
+\newpage
+\ \\
+(I did also make plots for bias and variance, but did not include them in the report as the task does not ask fro them. If interested look in the images folder.)\\
+\ \\
+\ \\
+Exercise 6:\\
+\ \\
+Did not have time to finish this task. But you may look at ex6.py to get an idea of what i wanted to do.
 \end{document}

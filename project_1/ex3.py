@@ -6,7 +6,6 @@ from sklearn.linear_model import LinearRegression
 from ex1 import OLS, create_X
 from franke import FrankeFunction
 from ex1 import OLS, MSE, R2, create_X
-from franke import FrankeFunction
 
 def cross_validation_split(dataset, folds=10):
     dataset_split = list()
@@ -108,5 +107,4 @@ if __name__ == "__main__":
     plt.legend()
     plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
     plt.xlabel("polynomial degree")
-    #plt.ylabel("Error")
     plt.show()

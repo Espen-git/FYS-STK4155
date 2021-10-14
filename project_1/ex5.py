@@ -41,7 +41,7 @@ def ex5_bootstrap():
     x_and_y_test_scaled = scaler.transform(x_and_y_test) 
 
     # Decide which values of lambda to use
-    nlambdas = 9
+    nlambdas = 10
     MSE_test_lambda = np.zeros((nlambdas, maxdegree))
     MSE_training_lambda = np.zeros((nlambdas, maxdegree))
     bias_lambda = np.zeros((nlambdas, maxdegree))
@@ -132,7 +132,7 @@ def ex5_cross_validation():
     x_and_y_scaled = scaler.transform(x_and_y) 
 
     # Decide which values of lambda to use
-    nlambdas = 9
+    nlambdas = 10
     MSE_test_lambda = np.zeros((nlambdas, maxdegree))
     MSE_training_lambda = np.zeros((nlambdas, maxdegree))
     bias_lambda = np.zeros((nlambdas, maxdegree))

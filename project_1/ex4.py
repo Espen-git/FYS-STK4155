@@ -30,11 +30,10 @@ def Surface_plot(data, lambdas, maxdegree, name):
     var_x = lambdas
     var_y = np.arange(maxdegree)
     var_x, var_y = np.meshgrid(var_x, var_y)
-    #fig = plt.figure(figsize=(32,12))
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     surf = ax.plot_surface(var_x, var_y, data, cmap=cm.plasma, linewidth = 0, antialiased=False)
-    ax.set_xlabel('Lambda values')
+    ax.set_xlabel('Lambda values (log(value))')
     ax.set_ylabel('Polynomial degree')
     ax.set_zlabel('Value')
     plt.savefig(name, dpi=300)
@@ -67,12 +66,12 @@ def ex4_bootstrap():
     x_and_y_test_scaled = scaler.transform(x_and_y_test) 
 
     # Decide which values of lambda to use
-    nlambdas = 5
+    nlambdas = 10
     MSE_test_lambda = np.zeros((nlambdas, maxdegree))
     MSE_training_lambda = np.zeros((nlambdas, maxdegree))
     bias_lambda = np.zeros((nlambdas, maxdegree))
     variance_lambda = np.zeros((nlambdas, maxdegree))
-    lambdas = np.logspace(-4, 1, nlambdas)
+    lambdas = np.logspace(-4, 4, nlambdas)
     for l in range(nlambdas):
         lmb = lambdas[l]
         mse_test = np.zeros(maxdegree)
@@ -157,12 +156,12 @@ def ex4_cross_validation():
     x_and_y_scaled = scaler.transform(x_and_y) 
 
     # Decide which values of lambda to use
-    nlambdas = 5
+    nlambdas = 10
     MSE_test_lambda = np.zeros((nlambdas, maxdegree))
     MSE_training_lambda = np.zeros((nlambdas, maxdegree))
     bias_lambda = np.zeros((nlambdas, maxdegree))
     variance_lambda = np.zeros((nlambdas, maxdegree))
-    lambdas = np.logspace(-4, 1, nlambdas)
+    lambdas = np.logspace(-4, 4, nlambdas)
     for l in range(nlambdas):
         lmb = lambdas[l]
         mse_test = np.zeros(maxdegree)
