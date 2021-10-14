@@ -57,11 +57,11 @@ def R2(z_actual, z_comuted):
     return r2
 
 if __name__ == "__main__":
-    n = 20 # polynomial degree
+    n = 5 # polynomial degree
     N = 50 # number of samples
     e = 0.1 # noise weight
-    show_beta_plot = True
-    show_plot = True
+    show_beta_plot = False
+    show_plot = False
 
     x = np.linspace(0, 1, N)
     y = np.linspace(0, 1, N)
@@ -88,14 +88,13 @@ if __name__ == "__main__":
     beta = OLS(X_train, z_train)
     z_tilde = X_train @ beta
     z_predict = X_test @ beta
-    
     # Compute confidence intervals for beta
     hessian_inverted = np.linalg.pinv(X_train.T.dot(X_train))
     beta_sigma = np.sqrt(hessian_inverted.diagonal()) # standard deviation for each beta
     z_value = 1.96 # Confidence of 95%
     confidence_intervals = np.zeros([len(beta)])
     for i in range(len(beta)):
-        confidence_intervals[i] = (z_value * beta_sigma[i]) / np.sqrt(N)
+        confidence_intervals[i] = (z_value * beta_sigma[i]) # / np.sqrt(N)
 
     if show_beta_plot:
         plt.errorbar(range(len(beta)), beta, yerr=confidence_intervals, fmt='.')

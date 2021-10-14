@@ -1,104 +1,121 @@
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-from matplotlib import cm
-from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
-from random import random, seed
-from franke import FrankeFunction
-from sklearn.model_selection import train_test_split
+#import random
+import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import r2_score
+from sklearn.model_selection import KFold
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import cross_val_score
+#from sklearn.model_selection import train_test_split
+from ex1 import OLS, create_X
+from franke import FrankeFunction
+from ex1 import OLS, MSE, R2, create_X
+from franke import FrankeFunction
+from random import seed
+from random import randrange
+ 
+# Split a dataset into k folds
+def cross_validation_split(dataset, folds=10):
+    dataset_split = list()
+    dataset_copy = list(dataset)
+    fold_size = int(len(dataset) / folds)
+    for i in range(folds):
+        fold = list()
+        while len(fold) < fold_size:
+            index = randrange(len(dataset_copy))
+            fold.append(dataset_copy.pop(index))
+        dataset_split.append(fold)
+    return dataset_split
 
-# From week35 slides
-def create_X(x, y, n):
-	if len(x.shape) > 1:
-		x = np.ravel(x)
-		y = np.ravel(y)
+# Make data set
+n = 40
+x,y = xy_data_2(n)
+z = FrankeFunction_noisy(x,y)
 
-	N = len(x)
-	l = int((n+1)*(n+2)/2) # Number of elements in beta
-	X = np.ones((N,l))
+# number of k-folds
+k_folds = 10
 
-	for i in range(1,n+1):
-		q = int((i)*(i+1)/2)
-		for k in range(i+1):
-			X[:,q+k] = (x**(i-k))*(y**k)
-            
-	return X 
+# Polynomial fit
+polynomial = 10
 
-def OLS(X, z):
-    """
-    x: Data matrix
-    z: Target values
+# Stacking x and y 
+x_and_y=np.hstack((x.ravel().reshape(x.ravel().shape[0],1),y.ravel().reshape(y.ravel().shape[0],1)))
 
-    beta: Solution to OLS
-    """
-    beta = np.linalg.pinv(X.T.dot(X)).dot(X.T).dot(z)
-    return beta
+# Scaling data
+scaler = StandardScaler()
+scaler.fit(x_and_y)
+x_and_y_scaled = scaler.transform(x_and_y)
 
-if __name__ == "__main__":
-    n = 5 # polynomial degree
-    N = 100 # number of samples
-    e = 0.1 # noise weight
-    show_plot = False
-    maxdegree = 20
-    error_training = np.zeros(maxdegree)
-    error_test = np.zeros(maxdegree)
+# Make list and arrays to store results
+all_r2_ols_cv=[]
+mean_r2_ols_cv=[]
+error = np.zeros(polynomial)
+bias = np.zeros(polynomial)
+variance = np.zeros(polynomial)
+polydegree = np.zeros(polynomial)
+train_error = np.zeros(polynomial)
 
-    #for n in range(maxdegree):
-    x = np.linspace(0, 1, N)
-    y = np.linspace(0, 1, N)
-    xx, yy = np.meshgrid(x, y)
 
-    z = FrankeFunction(xx, yy) # True values
-    # add noise
-    np.random.seed(2021)
-    noise = np.random.randn(N,N) # NxN matrix of normaly distributed noise
-    z = z + e*noise
-
-    X = create_X(x, y, n) # Creates the design matrix
-    X_train, X_test, z_train, z_test = train_test_split(X, z, 
-        test_size=0.2, random_state=2021)
-
+for poly in range(polynomial):
+    # Make list and arrays to store results
+    r2_ = []
     
-    scaler = StandardScaler() # Chose scaling method
-    scaler.fit(X_train) # fit scaler
-    X_train = scaler.transform(X_train) # Scale training data
-    X_test = scaler.transform(X_test) # Scale test data 
-    # Then the same for targets
-    scaler = StandardScaler()
-    scaler.fit(z_train)
-    z_train = scaler.transform(z_train)
-    z_test = scaler.transform(z_test)
+    #Make array to store predictions
+    pred_test = np.empty((int(z.ravel().shape[0]*(1/k_folds)), k_folds))
+    pred_train = np.empty((int(z.ravel().shape[0]*(1-(1/k_folds))), k_folds))
     
+    # Stacking x , y (X) and z 
+    data = np.hstack((x_and_y_scaled,z.ravel().reshape(n**2,1)))
     
-    beta = OLS(X_train, z_train)
-    ztilde = X_train @ beta
-    zpredict = X_test @ beta
+    #Make folds 
+    folds = cross_validation_split(data, k_folds)
+    for i in range(k_folds):
+        #Make train and test data using the i'th fold
+        n_fold = folds.copy()
+        test_data = n_fold.pop(i)
+        test_data= np.asarray(test_data)
+        train_data = np.vstack(n_fold)
+        
+        #split z and X
+        z_train = train_data[:,-1]
+        xy_train = train_data[:,0:-1]
+        z_test = test_data[:,-1]
+        xy_test = test_data[:,0:-1]
+        
+        # Fit training data
+        X_train = make_X_matrix(xy_train.T[0],xy_train.T[1],poly+1)
+        beta = calc_beta(X_train, z_train)
+        
+        # Do prediction on test and train data
+        z_pred_test=predict(xy_test.T[0],xy_test.T[1],poly+1,beta)
+        z_pred_train=predict(xy_train.T[0],xy_train.T[1],poly+1,beta)
+        pred_test[:,i]=predict(xy_test.T[0],xy_test.T[1],poly+1,beta)
+        pred_train[:,i]=predict(xy_train.T[0],xy_train.T[1],poly+1,beta)
+        
+        # Append results to arrays and lists
+        r2_.append(r2_score(z_test,z_pred_test))
+        
+    train_error[poly] = np.mean( np.mean((z_train.reshape(z_train.shape[0],1) - pred_train)**2, axis=1, keepdims=True) )   
+    error[poly] = np.mean( np.mean((z_test.reshape(z_test.shape[0],1) - pred_test)**2, axis=1, keepdims=True) )
+    bias[poly] = np.mean( (z_test.reshape(z_test.shape[0],1) - np.mean(pred_test, axis=1, keepdims=True))**2 )
+    variance[poly] = np.mean( np.var(pred_test, axis=1, keepdims=True) )
 
-    # Compute confidence intervals for beta
-    mean_beta = np.mean(beta, 1) # Mean value over beta_i
-    std_beta = np.std(beta, 1) # Standard deviation over beta_i
-    z_confidence = 1.96 # Confidence of 95%
-
-    confidence = np.zeros([len(beta)])
-    for i in range(len(beta)):
-        confidence[i] = (z_confidence * std_beta[i]) / np.sqrt(N)
-
-    if show_plot:
-        plt.errorbar(range(len(beta)), mean_beta, yerr=confidence, fmt='.')
-        plt.xlabel('beta_i')
-        plt.ylabel('mean')
-        plt.title('Confidence intervals of beta_i')
-        plt.show()
-
-    # MSE
-    # Scikit-learns MSE function
-    mse_train = mean_squared_error(z_train, ztilde)
-    mse_test = mean_squared_error(z_test, zpredict)
-
-    #R^2
-    # Scikit-learns r2 function
-    r2_train = r2_score(z_train, ztilde)
-    r2_test = r2_score(z_test, zpredict)
+    print('Polynomial degree:', poly+1)
+    print('Error:', error[poly])
+    print('Bias^2:', bias[poly])
+    print('Var:', variance[poly])
+    print('{} >= {} + {} = {}'.format(error[poly], bias[poly], variance[poly], bias[poly]+variance[poly]))
+        
+    #plotting prediction based on all data     
+    z_pred_for_plot = predict(x_and_y_scaled.T[0],x_and_y_scaled.T[1],poly+1,beta)
+    fig = plt.figure(figsize=(32,12))
+    ax = fig.gca(projection ='3d')
+    surf = ax.plot_surface(x,y,z_pred_for_plot.reshape(n,n),cmap=cm.coolwarm, linewidth = 0, antialiased=False)
+    ax.set_zlim(-0.10,1.40)
+    ax.zaxis.set_major_locator(LinearLocator(10))
+    ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+    fig.colorbar(surf,shrink=0.5, aspect=5)
+    fig.suptitle("A {} degree polynomial fit of Franke function using OLS and K-fold crossval".format(poly+1) ,fontsize="40", color = "black")
+    fig.show()
+        
+    all_r2_ols_cv.append(r2_)
+    mean_r2_ols_cv.append(np.mean(r2_))
