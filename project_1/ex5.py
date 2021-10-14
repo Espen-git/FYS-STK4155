@@ -10,11 +10,9 @@ from sklearn.model_selection import train_test_split
 from ex1 import MSE, create_X
 from ex2 import resample
 from ex3 import cross_validation_split
+from ex4 import Surface_plot
 from franke import FrankeFunction
 from sklearn.preprocessing import StandardScaler
-
-np.random.seed(2021)
-show_print = False
 
 def ex5_bootstrap():
     # Bootstarp as ex2.py but using Ridge
@@ -99,27 +97,10 @@ def ex5_bootstrap():
         bias_lambda[l,:] = bias
         variance_lambda[l,:] = variance
 
-    plt.figure()
-    for i in range(nlambdas):
-        mse_test = MSE_test_lambda[i]
-        mse_training = MSE_training_lambda[i]
-        plt.plot(mse_test, label='Test error, lambda = ' + str(lambdas[i]), alpha=0.4)
-        plt.plot(mse_training, label='Traning error, lambda = ' + str(lambdas[i]), alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
-
-    plt.figure()
-    for i in range(nlambdas):
-        bias = bias_lambda[i]
-        variance = variance_lambda[i]
-        plt.plot(bias, label="Bias, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-        plt.plot(variance, label="Variance, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
+    Surface_plot(MSE_training_lambda.T, lambdas, maxdegree, "ex5_traningerror_bootstrap.png")
+    Surface_plot(MSE_test_lambda.T, lambdas, maxdegree, "ex5_testerror_bootstrap.png")
+    Surface_plot(bias_lambda.T, lambdas, maxdegree, "ex5_bias_bootstrap.png")
+    Surface_plot(variance_lambda.T, lambdas, maxdegree, "ex5_variance_bootstrap.png")
 
 def ex5_cross_validation():
     # Cross-validation as ex3.py but using Ridge    
@@ -213,28 +194,14 @@ def ex5_cross_validation():
         bias_lambda[l,:] = bias
         variance_lambda[l,:] = variance
 
-    plt.figure()
-    for i in range(nlambdas):
-        mse_test = MSE_test_lambda[i]
-        mse_training = MSE_training_lambda[i]
-        plt.plot(mse_test, label='Test error, lambda = ' + str(lambdas[i]), alpha=0.4)
-        plt.plot(mse_training, label='Traning error, lambda = ' + str(lambdas[i]), alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
-
-    plt.figure()
-    for i in range(nlambdas):
-        bias = bias_lambda[i]
-        variance = variance_lambda[i]
-        plt.plot(bias, label="Bias, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-        plt.plot(variance, label="Variance, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
+    Surface_plot(MSE_training_lambda.T, lambdas, maxdegree, "ex5_traningerror_cv.png")
+    Surface_plot(MSE_test_lambda.T, lambdas, maxdegree, "ex5_testerror_cv.png")
+    Surface_plot(bias_lambda.T, lambdas, maxdegree, "ex5_bias_cv.png")
+    Surface_plot(variance_lambda.T, lambdas, maxdegree, "ex5_variance_cv.png")
 
 if __name__ == "__main__":
+    np.random.seed(2021)
+    show_print = False
+
     ex5_bootstrap()
     ex5_cross_validation()

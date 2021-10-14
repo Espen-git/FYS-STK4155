@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.4)  12 OCT 2021 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.4)  14 OCT 2021 21:35
 entering extended mode
 **./Report.tex
 (Report.tex
@@ -66,18 +66,18 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 ) (Report.aux)
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
 
 ("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
 df.mkii"
@@ -148,38 +148,35 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 460.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+
 
 ("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
+
 ("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Confidence_beta.png, id=1, 462.528pt x 346.896pt>
-File: Confidence_beta.png Graphic file (type png)
-<use Confidence_beta.png>
-Package pdftex.def Info: Confidence_beta.png  used on input line 12.
-(pdftex.def)             Requested size: 323.76738pt x 242.82553pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--13
-
- []
-
+<images/Confidence_beta.png, id=1, 462.528pt x 346.896pt>
+File: images/Confidence_beta.png Graphic file (type png)
+<use images/Confidence_beta.png>
+Package pdftex.def Info: images/Confidence_beta.png  used on input line 13.
+(pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
 [1
 
-{C:/Users/espen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Confidenc
-e_beta.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 14--18
+{C:/Users/espen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/Co
+nfidence_beta.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 16--20
 
  []
 
 [2] (Report.aux) ) 
 Here is how much of TeX's memory you used:
- 1652 strings out of 492484
- 24654 string characters out of 3121602
- 86222 words of memory out of 3000000
+ 1653 strings out of 492484
+ 24689 string characters out of 3121602
+ 86235 words of memory out of 3000000
  5984 multiletter control sequences out of 15000+200000
  12111 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -196,7 +193,7 @@ lic/amsfonts/cm/cmr8.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/espen/AppData/Local/Programs/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/espen/AppData/Local
 /Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Report.pdf (2 pages, 100494 bytes).
+Output written on Report.pdf (2 pages, 103182 bytes).
 PDF statistics:
  52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

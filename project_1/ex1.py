@@ -72,7 +72,7 @@ if __name__ == "__main__":
     np.random.seed(2021)
     noise = np.random.randn(N,N) # NxN matrix of normaly distributed noise
     z = z + e*noise
-
+    print(z.shape)
     # Stacking x and y and split data into test and train
     x_and_y=np.hstack((xx.ravel().reshape(xx.ravel().shape[0],1),yy.ravel().reshape(yy.ravel().shape[0],1)))
     x_and_y_train, x_and_y_test, z_train, z_test = train_test_split(x_and_y,z.ravel(),test_size=0.2, random_state=2021, shuffle=True)

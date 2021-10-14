@@ -2,7 +2,10 @@
 Much the same code as in ex2.py and ex3.py but using
 Ridge insead of OLS
 """
+from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
 import random
 from sklearn.model_selection import train_test_split
@@ -23,8 +26,19 @@ def Ridge(X, z, l):
     beta = np.linalg.pinv(X.T.dot(X)+l * np.identity(X.shape[1])).dot(X.T).dot(z)
     return beta
 
-np.random.seed(2021)
-show_print = False
+def Surface_plot(data, lambdas, maxdegree, name):
+    var_x = lambdas
+    var_y = np.arange(maxdegree)
+    var_x, var_y = np.meshgrid(var_x, var_y)
+    #fig = plt.figure(figsize=(32,12))
+    fig = plt.figure()
+    ax = fig.add_subplot(projection='3d')
+    surf = ax.plot_surface(var_x, var_y, data, cmap=cm.plasma, linewidth = 0, antialiased=False)
+    ax.set_xlabel('Lambda values')
+    ax.set_ylabel('Polynomial degree')
+    ax.set_zlabel('Value')
+    plt.savefig(name, dpi=300)
+    fig.show()
 
 def ex4_bootstrap():
     # Bootstarp as ex2.py but using Ridge
@@ -108,28 +122,10 @@ def ex4_bootstrap():
         bias_lambda[l,:] = bias
         variance_lambda[l,:] = variance
 
-
-    plt.figure()
-    for i in range(nlambdas):
-        mse_test = MSE_test_lambda[i]
-        mse_training = MSE_training_lambda[i]
-        plt.plot(mse_test, label='Test error, lambda = ' + str(lambdas[i]), alpha=0.4)
-        plt.plot(mse_training, label='Traning error, lambda = ' + str(lambdas[i]), alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
-
-    plt.figure()
-    for i in range(nlambdas):
-        bias = bias_lambda[i]
-        variance = variance_lambda[i]
-        plt.plot(bias, label="Bias, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-        plt.plot(variance, label="Variance, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
+    Surface_plot(MSE_training_lambda.T, lambdas, maxdegree, "ex4_traningerror_bootstrap.png")
+    Surface_plot(MSE_test_lambda.T, lambdas, maxdegree, "ex4_testerror_bootstrap.png")
+    Surface_plot(bias_lambda.T, lambdas, maxdegree, "ex4_bias_bootstrap.png")
+    Surface_plot(variance_lambda.T, lambdas, maxdegree, "ex4_variance_bootstrap.png")
 
 def ex4_cross_validation():
     # Cross-validation as ex3.py but using Ridge    
@@ -224,28 +220,14 @@ def ex4_cross_validation():
         bias_lambda[l,:] = bias
         variance_lambda[l,:] = variance
 
-    plt.figure()
-    for i in range(nlambdas):
-        mse_test = MSE_test_lambda[i]
-        mse_training = MSE_training_lambda[i]
-        plt.plot(mse_test, label='Test error, lambda = ' + str(lambdas[i]), alpha=0.4)
-        plt.plot(mse_training, label='Traning error, lambda = ' + str(lambdas[i]), alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
-
-    plt.figure()
-    for i in range(nlambdas):
-        bias = bias_lambda[i]
-        variance = variance_lambda[i]
-        plt.plot(bias, label="Bias, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-        plt.plot(variance, label="Variance, lambda = " + str(lambdas[i]), linestyle="-", alpha=0.4)
-    plt.xticks([0,1,2,3,4,5,6,7,8,9],["1","2","3","4","5","6","7","8","9","10"])
-    plt.xlabel("polynomial degree")
-    plt.legend()
-    plt.show()
+    Surface_plot(MSE_training_lambda.T, lambdas, maxdegree, "ex4_traningerror_cv.png")
+    Surface_plot(MSE_test_lambda.T, lambdas, maxdegree, "ex4_testerror_cv.png")
+    Surface_plot(bias_lambda.T, lambdas, maxdegree, "ex4_bias_cv.png")
+    Surface_plot(variance_lambda.T, lambdas, maxdegree, "ex4_variance_cv.png")
 
 if __name__ == "__main__":
+    np.random.seed(2021)
+    show_print = False
+
     ex4_bootstrap()
     ex4_cross_validation()
