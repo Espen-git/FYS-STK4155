@@ -15,7 +15,7 @@ from ex3 import cross_validation_split
 from franke import FrankeFunction
 from sklearn.preprocessing import StandardScaler
 
-def Ridge(X, z, l):
+def Ridge(X, z, lmd):
     """
     x: Data matrix
     z: Target values
@@ -23,8 +23,9 @@ def Ridge(X, z, l):
 
     beta: Solution to OLS
     """
-    beta = np.linalg.pinv(X.T.dot(X)+l * np.identity(X.shape[1])).dot(X.T).dot(z)
-    return beta
+    I = np.eye(X.shape[1], X.shape[1])
+    ridge = np.linalg.pinv(X.T.dot(X) + lmd * I).dot(X.T).dot(z)
+    return ridge
 
 def Surface_plot(data, lambdas, maxdegree, name):
     var_x = lambdas
