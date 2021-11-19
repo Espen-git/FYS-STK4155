@@ -19,7 +19,7 @@ def FrankeFunction(x,y):
     term4 = -0.2*np.exp(-(9*x-4)**2 - (9*y-7)**2)
     return term1 + term2 + term3 + term4
 
-def create_data(N, e, seed=2021):
+def create_data(N, e, seed=1337):
     """
     Crates x,y data ad well as z calculated from Franke function on
     the x,y data.
@@ -36,6 +36,10 @@ def create_data(N, e, seed=2021):
     np.random.seed(seed)
     noise = np.random.randn(N,N) # NxN matrix of normaly distributed noise
     z = z + e*noise
+
+    x = x.ravel()
+    y = y.ravel()
+    z = z.ravel()
 
     return x, y, z
 
@@ -65,7 +69,7 @@ def MSE(z_actual, z_computed):
 
 def R2(z_actual, z_computed):
     numerator = 1 - np.sum((z_actual - z_computed) ** 2)
-    denominator =  np.sum((z_actual - np.mean(z_actual)) ** 2)
+    denominator = np.sum((z_actual - np.mean(z_actual)) ** 2)
     r2 = numerator / denominator
     return r2
 
@@ -76,7 +80,7 @@ def OLS(X, z):
 
     beta: Solution to OLS
     """
-    theta = np.linalg.pinv(X.T.dot(X)).dot(X.T).dot(z)
+    theta = np.linalg.pinv(X.T @ X) @ X.T @ z
     return theta
 
 def Ridge(X, z, lmb):
@@ -100,22 +104,21 @@ def make_data_ready_for_regression(X, z, n=5):
     z - target data from create_data function
     n - polynomial degree
     """
-    X_train, X_test, z_train, z_test = train_test_split(X, z, test_size=0.2, random_state=2021, shuffle=True)
+    X_train, X_test, z_train, z_test = train_test_split(X, z, 
+            test_size=0.2, random_state=1337, shuffle=True)
 
     # Scaling data
     X_scaler = StandardScaler() # Chose scaling method
     X_scaler.fit(X_train) 
     X_train_scaled = X_scaler.transform(X_train) # Scale traning data
-    X_teset_scaled = X_scaler.transform(X_test)# Scale test data
+    X_test_scaled = X_scaler.transform(X_test)# Scale test data
 
     z_scaler = StandardScaler()
     z_scaler.fit(z_train.reshape(-1,1))
     z_train_scaled = z_scaler.transform(z_train.reshape(-1,1))
     z_test_scaled = z_scaler.transform(z_test.reshape(-1,1))
 
-    # Collect values in single varialbe
-    regression_data = {'X_train_scaled' : X_train_scaled, 'X_test_scaled' : X_test_scaled, 'z_train_scaled' : z_train_scaled, 'z_test_scaled' : z_test_scaled}
-    return regression_data
+    return X_train_scaled, X_test_scaled, z_train_scaled, z_test_scaled
 
 def resample(X, y):
     samples = len(y)

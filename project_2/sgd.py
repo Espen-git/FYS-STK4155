@@ -1,7 +1,8 @@
 import functions
+import numpy as np
 
 class StocasticGradientDescent():
-    def __init__(self, X_train, z_train, X_test, z_test):
+    def __init__(self, X_train, z_train, X_test, z_test ):
         self.X_train = X_train
         self.z_train = z_train
         self.X_test = X_test
@@ -13,23 +14,23 @@ class StocasticGradientDescent():
         Calculates gradient. If lmb == 0 we get OLS.
         For lmb != 0 we get ridge.
         """
-        g = (2 / size) * X.T @ (X @ theta - z) + 2*lmb * theta
+        g = (2/size) * X.T @ (X @ theta - z) + 2*lmb * theta
         return g
 
     
-    def learning_schedule(self, t0, t1, t)
+    def learning_schedule(self, t, t0=5, t1=50):
         return t0 / (t + t1)
 
-    def SGD(self, M, epochs, theta=None, lmb=0, t0=5, t1=50):
+    def SGD(self, M, epochs, lmb=0, gamma=0.01, theta=None, fixed_eta=None):
         """
         SGD from week 40 slides
         
         -INPUT-
             M - Size of a batch
             epochs - Number of epochs
-            theta - Initial guess
-            lmb - Outlier penalization fro ridge
-            t0, t1 - Values controling decay of learning rate
+            theta - Initial guess (random if None)
+            lmb - Regularization 
+            gamma - Momentum
         """
         n_batch = int(self.N / M) # number of minibatches
 
@@ -37,18 +38,26 @@ class StocasticGradientDescent():
         if not theta:
             theta = np.random.randn(self.X_train.shape[1], 1)
 
-        for epoch in range(1, epochs+1):
+        v = 0
+        self.mse_values = np.zeros(epochs)
+        np.random.seed(1337)
+        j = np.arange(self.N)
+        for epoch in range(epochs):
+            np.random.shuffle(j)
+            Xi = np.array_split(self.X_train[j], n_batch)
+            zi = np.array_split(self.z_train[j], n_batch)
             for i in range(n_batch):
-                random_index = M * np.random.randint(n_batch)
-                Xi = X[random_index:random_index+M] 
-                zi = z[random_index:random_index+M]
-                gradients = self.gradient(Xi, zi, theta, M, lmb)
-                eta = learning_schedule(t0, t1, epoch*n_batch+i)
-                theta = theta - eta*gradients
-        
+                random_index = np.random.randint(0, n_batch)
+                gradient = self.gradient(Xi[random_index], zi[random_index], theta, M, lmb)
+                if fixed_eta:
+                    eta = fixed_eta
+                else:
+                    eta = self.learning_schedule(epoch*self.N) # t0=5 t1=50
+                v = gamma * v + eta * gradient
+                theta = theta - v
+
             # mse values
-            self.mse_values = np.zeros(epochs)
-            z_tilde = self.X_test @ theta
-            self.mse_values[epoch-1] = functions.MSE(self.z_test, z_tilde)
+            z_pred = self.X_train @ theta
+            self.mse_values[epoch-1] = functions.MSE(self.z_train, z_pred)
         
         return theta
