@@ -95,10 +95,10 @@ def Ridge(X, z, lmb):
     theta = np.linalg.pinv(X.T.dot(X) + lmd * I).dot(X.T).dot(z)
     return theta
 
-def Acc(z_actual, z_computed):
+def Accuracy(z_actual, z_computed):
     return np.mean(z_actual==z_computed)
 
-def make_data_ready_for_regression(X, z, n=5):
+def make_franke_data_ready_for_regression(X, z, n=5):
     """
     X - data from create_X function 
     z - target data from create_data function

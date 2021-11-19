@@ -1,12 +1,213 @@
 \documentclass[12pt, letterpaper, twoside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{physics}
 \usepackage{amsfonts}
 \usepackage[margin=2cm,nohead]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath,mathtools}
 \graphicspath{ {images/} }
 \begin{document}
 \title{FYS-STK 4155 Project 2 }
 \author{Espen Lønes}
 \date{\today}
 \maketitle
+In this project we expand on project 1 by using new machine learning methods.
+These include Stochastic Gradient Descent (SGD), feed forward neural network (FFNN) with back-propagation and logistic regression using the neural network.
+We will use these methods on data generated from the Franke function or the Wisconsin Breast cancer data set.
+We use mean squared error (MSE) and cross-entropy as cost functions.
+\ \\
+\ \\
+(insert results)
+\ \\
+\ \\
+\section{Introduction}
+\section{Theory}
+\textbf{Gradient descent}\\
+\ \\
+The gradient of a function $f$ for a given variable $x$ tells us how much the function changes with changes in $x$. Usually the function is depended on multiple variables. It's gradient is therefore found by finding its partial derivatives.
+$$
+\nabla f = \left( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \cdots \right)
+$$
+Gradient decent is an iterative method where given a starting point, usually random but may be purposely chosen. The method goes along the gradient until it reaches a local minimum in the search space (hopefully  the global minimum). For us this search space is the chosen cost function, telling us how far from the correct solution our model is. Since our goal is to reach the minimum we move in the opposite direction of the gradient such that we move in the direction of steepest decent. This direction is found by calculating the gradient of the search space at the current point. We then move a given length in that direction to get our new point. This repeats until we get to the minimum where the gradient is zero. If we are at point $w_i$ with costfunction $C(w)$ we get the iterative scheme.
+$$
+w_{i+1} = w_i - \eta_k \nabla_w C(w_i)
+$$
+Where $\eta_k$ is the step length also called learning rate. The point $w$ corresponds to a set of values we call weights.\\
+\ \\
+As stated previously stated our goal is to reach the global minimum but depending on cost function, leaning rate and initial guess ($w_0$) we may (and for complex problems usually will) end up in a local minimum instead. A problem with the learning rate is that having a small learning rate makes the training slow as we need many points until we reach a minimum. On the other hand if it is to large we may overshoot the optimal solution. A popular method for mitigating this is by having a decreasing learning rate, then as we hopefully get close to the global minimum the learning rate will decrease making it less likely we overshoot the solution.\\
+\ \\
+\ \\
+\textbf{Stochastic gradient descent}\\
+\ \\
+The calculation of the cost functions gradient may be computationally heavy. We may instead use a version of gradient descent called stochastic gradient descent to speed this process up. SGD works by dividing the points into groups called mini-batches. We then choose a random batch and compute its gradient. If the sample size is large enough the average of these gradients will approximate the gradient calculated for all data points. The flow of the SGD method is therefore as follows. The SDG picks a random mini-batch of training points and uses these for training. Then the next mini-batch is chosen until all batches are used. This is called one epoch. We then use this gradient as in gradient descent and may also then start another epoch. The fact that this method only approximates the gradients means that some randomness is introduced in the gradient. This has the added benefit of possibly getting us out of a local minima.\\
+\ \\
+As a step to further increase the algorithms speed, SGD is often used with a momentum factor. The momentum increases the acceleration of the gradient giving a higher convergence rate. Having a momentum $0 \leq \gamma \leq 1$ we get this scheme for our weights.
+$$
+v_{i+1} = \gamma v_i + \eta_k \nabla C(w_i)
+$$
+$$
+w_{i+1} = w_i - v_{i+1}
+$$
+(Usualy having $v_{-1} = 0$)\\
+High $\gamma$ values gives large acceleration. While $\gamma = 0$ gives ordinary SGD.\\
+\ \\
+\ \\
+\textbf{Neural networks}\\
+\ \\
+A neural network consists of layers, one input layer, one output layer and a any number of hidden layers (may have no hidden layers).
+Each layer has a set of neurons, for the input layer these are the input neurons where the number of neurons are determined by our problem and our representation of it. The output layer has the output neurons. There is no need to have the same amount of input a s output neurons.\\
+\includegraphics[scale=0.5]{"NN"}\\
+\ \\
+\ \\
+\textbf{Feed forward neural network (FFNN)}\\ 
+\ \\
+A neural network where the output from one layer is used as input to the next. This implies that the network does not contain loops. These are the simplest and easiest forms of neural network and use algorithms like back propagation for learning.\\
+\ \\
+\ \\
+\textbf{Activation functions}\\
+\ \\
+\ \\
+In neural networks the sum of the weighted inputs to a node, is used as input to that nodes activation function. Activation functions are divided in two main groups, linear and non-linear. The linear function are lines/linear and are not bounded by any range, the identity function is such a function $\sigma(z) = z$.
+The non-linear functions are more often used as they usually make the model better at generalizing and adapting to different data.\\
+\ \\
+Sigmoid functions are a set of s-shaped functions often used as activation functions in neural networks. One specific sigmoid that has been used frequently in NNs is the logistic function, given by.
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}} = \frac{e^z}{e^z + 1}
+$$
+With the derivative
+$$
+\sigma'(z) = \sigma(z)(1 - \sigma(z))
+$$
+Its advantage lies in that it's values fall between 0 and 1. This is very useful when the output is a probability. Unfortunately the logistic function can halt the NN as the derivative is often very close to zero. We now often use functions like ReLU and leaky ReLU instead.\\
+\ \\
+\ \\
+The ReLU and (rectified linear unit) function is variant of the sigmoid.\\
+\[
+    \sigma(z) =
+    \begin{dcases*}
+  		\; 0 & if $z \leq 0 $ \\
+  		z & if $z > 0$
+	\end{dcases*}
+	= max\{0, z\}
+\]
+Derivative\\
+\[
+    \sigma'(z) =
+    \begin{dcases*}
+  		\; 0 & if $z \leq 0 $ \\
+  		1 & if $z > 0$
+	\end{dcases*}
+\]
+We see that for ReLU increasing the weights does not saturate and stop the learning. But it does it the weights are negative. ReLU is often used in the hidden layers.\\
+\ \\
+Another variation is the Leaky ReLU that does not saturate that instead of giving zero for negative input it multiples with 0.01.\\
+\[
+    \sigma(z) =
+    \begin{dcases*}
+  		\; 0.01z & if $z \leq 0 $ \\
+  		z & if $z > 0$
+	\end{dcases*}
+\]
+\[
+    \sigma'(z) =
+    \begin{dcases*}
+  		\; 0.01 & if $z \leq 0 $ \\
+  		1 & if $z > 0$
+	\end{dcases*}
+\]
+As the gradient of leaky ReLU newer goes to zero the neurons never stop learning. Making this activation function very robust.\\
+\ \\
+\ \\
+\textbf{Cost functions}\\
+\ \\
+Cost functions tell us how right or wrong a prediction is. It uses the predicted value and a true value in order to quantify the quality of our current model. 
+In neural networks this value is used to update the weights and biases. For liner regression we use the mean squared error (MSE), while for logistic regression cross entropy is used.\\
+\ \\
+The MSE cost function.
+$$
+C(w) = (Xw - z)^T(Xw - z) + \lambda w^T w
+$$
+Where $X$ is the design matrix, $z$ is the true labels, w is the weights and $\lambda$ is the regularization parameter.\\
+\ \\
+The MSE takes the averages of the squares of the errors. This works well when fitting to a line. Since we do gradient descent we also needs its derivative.
+$$
+\nabla C(w) = 2 X^T (X^T w - z) + 2 \lambda w
+$$\\
+\ \\
+\ \\
+When categorizing on the cancer data we look at probabilities. As we are no longer looking at points, and also wanting the probabilities to lie in $[0,1]$ with a total sum of 1. MSE is not a god choice of cost function. Instead we use cross entropy.
+$$
+C(\hat{w}) = -log P(D|\hat{w})
+$$  
+With
+$$
+P(D|\hat{w}) = \prod_{i=0}^n \prod_{c=0}^{C-1}(P(y_{ic} = 1))^{y_{ic}}
+$$
+and
+$$
+P(y_{ic} = 1|x_i,\hat{w}) = \frac{exp((a_i^{hidden})^T \hat{w_c})}
+{\sum_{c' = 0}^{C-1} exp((a_i^{hidden})^T \hat{w_{c'}})}
+$$
+Here $D$ is our data and $w$ the weights.\\
+\colorbox{yellow}{softmax?}\\
+\ \\
+\ \\
+\textbf{Logistic regression}\\
+\ \\
+Logistic regression is a special use case of neural networks often used when doing binary classification, like we do on the cancer data. It may also be used with multiple categories. It uses the logistic function as activation function and cross entropy as cost function. It also has no hidden layers.
+This method does not suffer from the same problems that general neural networks suffer from. Like to small or to large gradients. But its simplicity also limits its usefulness. Like leaning the fine details of a dataset, especially feature rich data.\\
+\ \\
+\ \\
+\textbf{Backpropagation}\\
+\ \\
+Backpropagation is an algorithm for updating the weights and biases of a neural network. It computes the gradient of the cost function in respect to the weights and biases. The aim of backpropagation is to calculate the partial derivatives. \\
+$\frac{\partial C}{\partial w}$ and $\frac{\partial C}{\partial b}$\\
+This is done with the chain rule. Where the cost function depends on the activation function $a$, which in turn depends on the weighted sum $z$, which again depends on the weights and biases. Giving us.\\
+$$
+\frac{\partial C}{\partial w} = \frac{\partial C}{\partial a}\frac{\partial C}{\partial z}\frac{\partial C}{\partial w}
+$$
+\ \\
+$$
+\frac{\partial C}{\partial b} = \frac{\partial C}{\partial a}\frac{\partial C}{\partial z}\frac{\partial C}{\partial b}
+$$
+Doing this individually for all weights and biases is very slow. Instead we calculate the gradient for each layer in reverse order. By doing this we avoid unnecessary calculations and duplicate values. It is also easier to see how changing the weights and biases change the output when starting on the last layer. The gradient of the weighted input(s) to a given hidden layer is $\delta^l$ from the back to the front layer (often called the error). We also use k to denote the k-th node in the $(l-1)$-th layer. And $j$ for the $j$-th node in the $l$-t layer.\\
+\ \\
+Backpropagation consists of a set of four equations. The first being for the error $\delta^l$ in the output layer.\\
+$$
+\delta_k^L = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L)
+$$
+Thereafter the error for the hidden layers $L-1, L-2,\cdots,2$ are computed recursively.\\
+$$
+\delta_j^l = \sum_k \delta_j^{l+1} w_j^{l+1} \sigma'(z_j^{l})
+$$
+These errors are then used to calculate the cost functions partial derivatives.\\
+$$
+\frac{\partial C}{\partial w_{jk}^{l}} = \delta_j^l a_k^{l-1}
+$$
+\ \\
+$$
+\frac{\partial C}{\partial b_j^l} = \delta_j^l
+$$
+Lastly the partial derivatives are used to update the weights and biases for layers $L-1,L-2,\cdots,2$ using gradient decent.\\
+$$
+w_{jk}^l \leftarrow w_{jk}^l - \eta \frac{\partial C}{\partial w_{jk}^l}
+= w_{jk}^l - \eta \delta_j^l a_{k}^{l-1}
+$$
+\ \\
+$$
+b_j^l \leftarrow b_j^l - \eta \frac{\partial C}{\partial b_j^l}
+= b_j^l - \eta \delta_j^l
+$$
+In order to avoid overfitting a regularization parameter $\lambda$ may be added. This penalises the weight matrices. A common regularization parameter is the L2. The penalty is added to the cost function. The regularization forces the weights towards zero but not all the way to zero. This way a simpler and more generalizable solution with the same error will likely be selected. Thus reducing overfitting. The cost function with L2 is defined by.
+$$
+C(\theta) = L(\theta) + \lambda||w||_2^2
+$$
+With gradient.
+$$
+\nabla C(\theta) = \nabla L(\theta) + 2 \lambda w
+$$
+\ \\
+\section{Method}
+
 \end{document}

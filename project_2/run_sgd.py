@@ -90,7 +90,7 @@ e = 0.1 # noise weight
 n = 5 # polynomial degree
 x,y,z = functions.create_data(N, e)
 X = functions.create_X(x, y, n)
-X_train, X_test, z_train, z_test = functions.make_data_ready_for_regression(X, z, n)
+X_train, X_test, z_train, z_test = functions.make_franke_data_ready_for_regression(X, z, n)
 
 clf = StocasticGradientDescent(X_train, z_train, X_test, z_test)
 
