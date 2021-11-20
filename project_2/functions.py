@@ -98,7 +98,7 @@ def Ridge(X, z, lmb):
 def Accuracy(z_actual, z_computed):
     return np.mean(z_actual==z_computed)
 
-def make_franke_data_ready_for_regression(X, z, n=5):
+def make_franke_data_ready_for_regression(X, z):
     """
     X - data from create_X function 
     z - target data from create_data function
@@ -119,25 +119,3 @@ def make_franke_data_ready_for_regression(X, z, n=5):
     z_test_scaled = z_scaler.transform(z_test.reshape(-1,1))
 
     return X_train_scaled, X_test_scaled, z_train_scaled, z_test_scaled
-
-def resample(X, y):
-    samples = len(y)
-    resampled_X = np.zeros((X.shape))
-    resampled_y = np.zeros((y.shape))
-    for i in range(samples):
-        random_index = random.randint(0, samples-1)
-        resampled_X[i,:] = X[random_index, :]
-        resampled_y[i] = y[random_index]
-    return resampled_X, resampled_y
-
-def cross_validation_split(dataset, folds=10):
-    dataset_split = list()
-    dataset_copy = list(dataset)
-    fold_size = int(len(dataset) / folds)
-    for i in range(folds):
-        fold = list()
-        while len(fold) < fold_size:
-            index = random.randrange(len(dataset_copy))
-            fold.append(dataset_copy.pop(index))
-        dataset_split.append(fold)
-    return dataset_split

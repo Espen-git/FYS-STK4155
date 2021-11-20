@@ -1,305 +1,130 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.4)  19 NOV 2021 20:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.25)  20 NOV 2021 22:32
 entering extended mode
 **./Report.tex
 (Report.tex
-LaTeX2e <2019-10-01> patch level 3
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
-Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size12.clo"
-File: size12.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
+LaTeX2e <2021-06-01> patch level 1
+L3 programming layer <2021-10-18>
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
-) ("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.st
-y"
-Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks14
-\inpenc@posthook=\toks15
+\c@part=\count182
+\c@section=\count183
+\c@subsection=\count184
+\c@subsubsection=\count185
+\c@paragraph=\count186
+\c@subparagraph=\count187
+\c@figure=\count188
+\c@table=\count189
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
-sty"
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
-y"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
+\KV@toks@=\toks18
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
-sty"
-Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
-ics.cfg"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 105.
+Package graphics Info: Driver file: pdftex.def on input line 107.
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
-x.def"
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen103
-\Gin@req@width=\dimen104
-)
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/physics\physics.st
-y"
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+) (C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/physics\physics.sty
 Package: physics 
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3packages/xparse\
-xparse.sty"
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3kernel\expl3.sty
-"
-Package: expl3 2019-11-07 L3 programming layer (loader) 
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2021-10-18 L3 programming layer (loader) 
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3kernel\expl3-cod
-e.tex"
-Package: expl3 2019-11-07 L3 programming layer (code)
-\c_max_int=\count88
-\l_tmpa_int=\count89
-\l_tmpb_int=\count90
-\g_tmpa_int=\count91
-\g_tmpb_int=\count92
-\l__seq_internal_a_int=\count93
-\l__seq_internal_b_int=\count94
-\g__kernel_prg_map_int=\count95
-\c__ior_term_noprompt_ior=\count96
-\c_log_iow=\count97
-\l_iow_line_count_int=\count98
-\l__iow_line_target_int=\count99
-\l__iow_one_indent_int=\count100
-\l__iow_indent_int=\count101
-\c_zero_dim=\dimen105
-\c_max_dim=\dimen106
-\l_tmpa_dim=\dimen107
-\l_tmpb_dim=\dimen108
-\g_tmpa_dim=\dimen109
-\g_tmpb_dim=\dimen110
-\c_zero_skip=\skip43
-\c_max_skip=\skip44
-\l_tmpa_skip=\skip45
-\l_tmpb_skip=\skip46
-\g_tmpa_skip=\skip47
-\g_tmpb_skip=\skip48
-\c_zero_muskip=\muskip10
-\c_max_muskip=\muskip11
-\l_tmpa_muskip=\muskip12
-\l_tmpb_muskip=\muskip13
-\g_tmpa_muskip=\muskip14
-\g_tmpb_muskip=\muskip15
-\l_keys_choice_int=\count102
-\l__intarray_loop_int=\count103
-\c__intarray_sp_dim=\dimen111
-\g__intarray_font_int=\count104
-\c__fp_leading_shift_int=\count105
-\c__fp_middle_shift_int=\count106
-\c__fp_trailing_shift_int=\count107
-\c__fp_big_leading_shift_int=\count108
-\c__fp_big_middle_shift_int=\count109
-\c__fp_big_trailing_shift_int=\count110
-\c__fp_Bigg_leading_shift_int=\count111
-\c__fp_Bigg_middle_shift_int=\count112
-\c__fp_Bigg_trailing_shift_int=\count113
-\c__kernel_randint_max_int=\count114
-\g__fp_array_int=\count115
-\l__fp_array_loop_int=\count116
-\l__sort_length_int=\count117
-\l__sort_min_int=\count118
-\l__sort_top_int=\count119
-\l__sort_max_int=\count120
-\l__sort_true_max_int=\count121
-\l__sort_block_int=\count122
-\l__sort_begin_int=\count123
-\l__sort_end_int=\count124
-\l__sort_A_int=\count125
-\l__sort_B_int=\count126
-\l__sort_C_int=\count127
-\l__str_internal_int=\count128
-\c__str_replacement_char_int=\count129
-\l__tl_analysis_normal_int=\count130
-\l__tl_analysis_index_int=\count131
-\l__tl_analysis_nesting_int=\count132
-\l__tl_analysis_type_int=\count133
-\l__regex_internal_a_int=\count134
-\l__regex_internal_b_int=\count135
-\l__regex_internal_c_int=\count136
-\l__regex_balance_int=\count137
-\l__regex_group_level_int=\count138
-\l__regex_mode_int=\count139
-\c__regex_cs_in_class_mode_int=\count140
-\c__regex_cs_mode_int=\count141
-\l__regex_catcodes_int=\count142
-\l__regex_default_catcodes_int=\count143
-\c__regex_catcode_D_int=\count144
-\c__regex_catcode_S_int=\count145
-\c__regex_catcode_L_int=\count146
-\c__regex_catcode_O_int=\count147
-\c__regex_catcode_A_int=\count148
-\c__regex_all_catcodes_int=\count149
-\l__regex_show_lines_int=\count150
-\l__regex_min_state_int=\count151
-\l__regex_max_state_int=\count152
-\l__regex_left_state_int=\count153
-\l__regex_right_state_int=\count154
-\l__regex_capturing_group_int=\count155
-\l__regex_min_pos_int=\count156
-\l__regex_max_pos_int=\count157
-\l__regex_curr_pos_int=\count158
-\l__regex_start_pos_int=\count159
-\l__regex_success_pos_int=\count160
-\l__regex_curr_char_int=\count161
-\l__regex_curr_catcode_int=\count162
-\l__regex_last_char_int=\count163
-\l__regex_case_changed_char_int=\count164
-\l__regex_curr_state_int=\count165
-\l__regex_step_int=\count166
-\l__regex_min_active_int=\count167
-\l__regex_max_active_int=\count168
-\l__regex_replacement_csnames_int=\count169
-\l__regex_match_count_int=\count170
-\l__regex_min_submatch_int=\count171
-\l__regex_submatch_int=\count172
-\l__regex_zeroth_submatch_int=\count173
-\g__regex_trace_regex_int=\count174
-\c_empty_box=\box27
-\l_tmpa_box=\box28
-\l_tmpb_box=\box29
-\g_tmpa_box=\box30
-\g_tmpb_box=\box31
-\l__box_top_dim=\dimen112
-\l__box_bottom_dim=\dimen113
-\l__box_left_dim=\dimen114
-\l__box_right_dim=\dimen115
-\l__box_top_new_dim=\dimen116
-\l__box_bottom_new_dim=\dimen117
-\l__box_left_new_dim=\dimen118
-\l__box_right_new_dim=\dimen119
-\l__box_internal_box=\box32
-\l__coffin_internal_box=\box33
-\l__coffin_internal_dim=\dimen120
-\l__coffin_offset_x_dim=\dimen121
-\l__coffin_offset_y_dim=\dimen122
-\l__coffin_x_dim=\dimen123
-\l__coffin_y_dim=\dimen124
-\l__coffin_x_prime_dim=\dimen125
-\l__coffin_y_prime_dim=\dimen126
-\c_empty_coffin=\box34
-\l__coffin_aligned_coffin=\box35
-\l__coffin_aligned_internal_coffin=\box36
-\l_tmpa_coffin=\box37
-\l_tmpb_coffin=\box38
-\g_tmpa_coffin=\box39
-\g_tmpb_coffin=\box40
-\l__coffin_bounding_shift_dim=\dimen127
-\l__coffin_left_corner_dim=\dimen128
-\l__coffin_right_corner_dim=\dimen129
-\l__coffin_bottom_corner_dim=\dimen130
-\l__coffin_top_corner_dim=\dimen131
-\l__coffin_scaled_total_height_dim=\dimen132
-\l__coffin_scaled_width_dim=\dimen133
-\c__coffin_empty_coffin=\box41
-\l__coffin_display_coffin=\box42
-\l__coffin_display_coord_coffin=\box43
-\l__coffin_display_pole_coffin=\box44
-\l__coffin_display_offset_dim=\dimen134
-\l__coffin_display_x_dim=\dimen135
-\l__coffin_display_y_dim=\dimen136
-\g__char_data_ior=\read1
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3kernel\l3depreca
-tion.def"
-File: l3deprecation.def 2019-04-06 v L3 Deprecated functions
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count190
+\l__pdf_internal_box=\box50
 ))
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
-d-pdfmode.def"
-File: l3backend-pdfmode.def 2019-04-06 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count175
-\l__pdf_internal_box=\box45
-))
-Package: xparse 2019-10-11 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count176
-\g__xparse_grabber_int=\count177
-\l__xparse_m_args_int=\count178
-\l__xparse_v_nesting_int=\count179
+Package: xparse 2021-08-27 L3 Experimental document command parser
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.st
-y"
-Package: amsmath 2019/11/16 v2.17d AMS math features
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2021/04/20 v2.17j AMS math features
 \@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.st
-y"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty
-"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks17
-\ex@=\dimen137
+\@emptytoks=\toks19
+\ex@=\dimen141
 ))
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty
-"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen138
+\pmbraise@=\dimen142
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
-"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count180
-LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count181
-\leftroot@=\count182
-LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count183
-\DOTSCASE@=\count184
-LaTeX Info: Redefining \ldots on input line 486.
-LaTeX Info: Redefining \dots on input line 489.
-LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box46
-\strutbox@=\box47
-\big@size=\dimen139
-LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count185
-\c@MaxMatrixCols=\count186
+\inf@bad=\count191
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count192
+\leftroot@=\count193
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count194
+\DOTSCASE@=\count195
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+\big@size=\dimen143
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count196
+\c@MaxMatrixCols=\count197
 \dotsspace@=\muskip16
-\c@parentequation=\count187
-\dspbrk@lvl=\count188
-\tag@help=\toks18
-\row@=\count189
-\column@=\count190
-\maxfields@=\count191
-\andhelp@=\toks19
-\eqnshift@=\dimen140
-\alignsep@=\dimen141
-\tagshift@=\dimen142
-\tagwidth@=\dimen143
-\totwidth@=\dimen144
-\lineht@=\dimen145
-\@envbody=\toks20
+\c@parentequation=\count198
+\dspbrk@lvl=\count199
+\tag@help=\toks20
+\row@=\count266
+\column@=\count267
+\maxfields@=\count268
+\andhelp@=\toks21
+\eqnshift@=\dimen144
+\alignsep@=\dimen145
+\tagshift@=\dimen146
+\tagwidth@=\dimen147
+\totwidth@=\dimen148
+\lineht@=\dimen149
+\@envbody=\toks22
 \multlinegap=\skip50
 \multlinetaggap=\skip51
-\mathdisplay@stack=\toks21
-LaTeX Info: Redefining \[ on input line 2858.
-LaTeX Info: Redefining \] on input line 2859.
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
 ))
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.
-sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -307,37 +132,33 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty
-"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- ("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty
-"
-Package: iftex 2019/11/07 v1.0c TeX engine tests
-))
-\Gm@cnth=\count192
-\Gm@cntv=\count193
-\c@Gm@tempcnt=\count194
-\Gm@bindingoffset=\dimen146
-\Gm@wd@mp=\dimen147
-\Gm@odd@mp=\dimen148
-\Gm@even@mp=\dimen149
-\Gm@layoutwidth=\dimen150
-\Gm@layoutheight=\dimen151
-\Gm@layouthoffset=\dimen152
-\Gm@layoutvoffset=\dimen153
-\Gm@dimlist=\toks22
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-cfg"))
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count269
+\Gm@cntv=\count270
+\c@Gm@tempcnt=\count271
+\Gm@bindingoffset=\dimen150
+\Gm@wd@mp=\dimen151
+\Gm@odd@mp=\dimen152
+\Gm@even@mp=\dimen153
+\Gm@layoutwidth=\dimen154
+\Gm@layoutheight=\dimen155
+\Gm@layouthoffset=\dimen156
+\Gm@layoutvoffset=\dimen157
+\Gm@dimlist=\toks24
+
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color
-.cfg"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -351,124 +172,145 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/mathtools\mathtool
-s.sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
 Package: mathtools 2021/04/12 v1.27 mathematical typesetting tools
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\calc.sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count195
-\calc@Bcount=\count196
-\calc@Adimen=\dimen154
-\calc@Bdimen=\dimen155
+\calc@Acount=\count272
+\calc@Bcount=\count273
+\calc@Adimen=\dimen158
+\calc@Bdimen=\dimen159
 \calc@Askip=\skip52
 \calc@Bskip=\skip53
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count197
+\calc@Ccount=\count274
 \calc@Cskip=\skip54
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/mathtools\mhsetup.
-sty"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 130.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 130.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 130.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
-\g_MT_multlinerow_int=\count198
-\l_MT_multwidth_dim=\dimen156
+\g_MT_multlinerow_int=\count275
+\l_MT_multwidth_dim=\dimen160
 \origjot=\skip55
-\l_MT_shortvdotswithinadjustabove_dim=\dimen157
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen158
-\l_MT_above_intertext_sep=\dimen159
-\l_MT_below_intertext_sep=\dimen160
-\l_MT_above_shortintertext_sep=\dimen161
-\l_MT_below_shortintertext_sep=\dimen162
-\xmathstrut@box=\box48
-\xmathstrut@dim=\dimen163
-) (Report.aux)
+\l_MT_shortvdotswithinadjustabove_dim=\dimen161
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen162
+\l_MT_above_intertext_sep=\dimen163
+\l_MT_below_intertext_sep=\dimen164
+\l_MT_above_shortintertext_sep=\dimen165
+\l_MT_below_shortintertext_sep=\dimen166
+\xmathstrut@box=\box53
+\xmathstrut@dim=\dimen167
+)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+ (C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count276
+\float@exts=\toks25
+\float@box=\box54
+\@float@everytoks=\toks26
+\@floatcapt=\box55
+)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks27
+\c@algorithm=\count277
+)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
+ode.sty
+Package: algpseudocode 
+
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmi
+cx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count278
+\c@ALG@rem=\count279
+\c@ALG@nested=\count280
+\ALG@tlm=\skip56
+\ALG@thistlm=\skip57
+\c@ALG@Lnr=\count281
+\c@ALG@blocknr=\count282
+\c@ALG@storecount=\count283
+\c@ALG@tmpcounter=\count284
+\ALG@tmplength=\skip58
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count285
+\lst@gtempboxa=\box56
+\lst@token=\toks28
+\lst@length=\count286
+\lst@currlwidth=\dimen168
+\lst@column=\count287
+\lst@pos=\count288
+\lst@lostspace=\dimen169
+\lst@width=\dimen170
+\lst@newlines=\count289
+\lst@lineno=\count290
+\lst@maxwidth=\dimen171
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count291
+\lst@skipnumbers=\count292
+\lst@framebox=\box57
+)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+(Report.aux)
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
-df.mkii"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count199
-\scratchdimen=\dimen164
-\scratchbox=\box49
-\nofMPsegments=\count266
-\nofMParguments=\count267
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count268
-\MPscratchDim=\dimen165
-\MPnumerator=\count269
-\makeMPintoPDFobject=\count270
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count293
+\scratchdimen=\dimen172
+\scratchbox=\box58
+\nofMPsegments=\count294
+\nofMParguments=\count295
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count296
+\MPscratchDim=\dimen173
+\MPnumerator=\count297
+\makeMPintoPDFobject=\count298
+\everyMPtoPDFconversion=\toks30
 )
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epsto
-pdf-base.sty"
-Package: epstopdf-base 2019/11/24 v2.7 Base part for package epstopdf
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infware
-rr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.st
-y"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefin
-ekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds
-.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions
-.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetke
-ys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmd
-s.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifluatex.s
-ty"
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-))))
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexc
-mds.sty"
-Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-42.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 460.
-)
+85.
+
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -503,178 +345,162 @@ G,.JBIG2,.JB2,.eps]
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 14.
+\c@lstlisting=\count299
+LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 14.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
 
-("C:\Users\espen\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+
+(C:\Users\espen\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 15--24
+Underfull \hbox (badness 10000) in paragraph at lines 28--31
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--24
+Underfull \hbox (badness 10000) in paragraph at lines 32--35
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--24
+Underfull \hbox (badness 10000) in paragraph at lines 41--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--29
+Underfull \hbox (badness 10000) in paragraph at lines 41--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--46
+Underfull \hbox (badness 10000) in paragraph at lines 41--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--46
+Underfull \hbox (badness 10000) in paragraph at lines 41--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--46
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--46
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--46
+Underfull \hbox (badness 10000) in paragraph at lines 41--52
 
  []
 
 [1
 
-{C:/Users/espen/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<images/NN.jpg, id=13, 575.90157pt x 319.94531pt>
-File: images/NN.jpg Graphic file (type jpg)
-<use images/NN.jpg>
-Package pdftex.def Info: images/NN.jpg  used on input line 60.
+{C:/Users/espen/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+<images//NN.jpg, id=13, 575.90157pt x 319.94531pt>
+File: images//NN.jpg Graphic file (type jpg)
+<use images//NN.jpg>
+Package pdftex.def Info: images//NN.jpg  used on input line 66.
 (pdftex.def)             Requested size: 287.95007pt x 159.97226pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--75
+Underfull \hbox (badness 10000) in paragraph at lines 57--81
+
+ []
+
+[2 <./images//NN.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 87--92
 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 81--86
+Underfull \hbox (badness 10000) in paragraph at lines 87--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--86
+Underfull \hbox (badness 10000) in paragraph at lines 87--92
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--86
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--95
-
- []
-
-[3 <./images/NN.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 101--105
+Underfull \hbox (badness 10000) in paragraph at lines 107--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--105
+Underfull \hbox (badness 10000) in paragraph at lines 107--111
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 124--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--128
+Underfull \hbox (badness 10000) in paragraph at lines 124--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--128
+Underfull \hbox (badness 10000) in paragraph at lines 124--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 118--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--134
+Underfull \hbox (badness 10000) in paragraph at lines 124--134
 
  []
 
@@ -684,72 +510,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 136--140
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+Underfull \hbox (badness 10000) in paragraph at lines 142--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--146
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--155
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--155
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--155
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 156--162
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 156--162
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 168--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 168--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 174--176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--167
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--171
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--177
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--177
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--181
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 183--185
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--189
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
 
  []
 
@@ -758,41 +584,233 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--193
 
  []
 
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 204--206
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--198
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--210
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
+Underfull \hbox (badness 10000) in paragraph at lines 207--210
 
  []
 
-[6] (Report.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--225
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 226--230
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--267
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 269--281
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--281
+
+ []
+
+<images//one_hidden_50_sigmoid.png, id=36, 462.528pt x 346.896pt>
+File: images//one_hidden_50_sigmoid.png Graphic file (type png)
+<use images//one_hidden_50_sigmoid.png>
+Package pdftex.def Info: images//one_hidden_50_sigmoid.png  used on input line 
+299.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+<images//one_hidden_50_ReLU.png, id=38, 462.528pt x 346.896pt>
+File: images//one_hidden_50_ReLU.png Graphic file (type png)
+<use images//one_hidden_50_ReLU.png>
+Package pdftex.def Info: images//one_hidden_50_ReLU.png  used on input line 300
+.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--301
+
+ []
+
+[8 <./images//one_hidden_50_sigmoid.png>]
+<images//two_hidden_20_sigmoid.png, id=43, 462.528pt x 346.896pt>
+File: images//two_hidden_20_sigmoid.png Graphic file (type png)
+<use images//two_hidden_20_sigmoid.png>
+Package pdftex.def Info: images//two_hidden_20_sigmoid.png  used on input line 
+314.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+<images//two_hidden_20_ReLU.png, id=44, 462.528pt x 346.896pt>
+File: images//two_hidden_20_ReLU.png Graphic file (type png)
+<use images//two_hidden_20_ReLU.png>
+Package pdftex.def Info: images//two_hidden_20_ReLU.png  used on input line 315
+.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--316
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9 <./images//one_hidden_50_ReLU.png> <./images//two_hidden_20_sigmoid.png>]
+<images//three_hidden_10_sigmoid.png, id=50, 462.528pt x 346.896pt>
+File: images//three_hidden_10_sigmoid.png Graphic file (type png)
+<use images//three_hidden_10_sigmoid.png>
+Package pdftex.def Info: images//three_hidden_10_sigmoid.png  used on input lin
+e 329.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+<images//three_hidden_10_ReLU.png, id=51, 462.528pt x 346.896pt>
+File: images//three_hidden_10_ReLU.png Graphic file (type png)
+<use images//three_hidden_10_ReLU.png>
+Package pdftex.def Info: images//three_hidden_10_ReLU.png  used on input line 3
+30.
+(pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--331
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10 <./images//two_hidden_20_ReLU.png> <./images//three_hidden_10_sigmoid.png>
+]
+<images//epoch_v_batch_sigmoid.png, id=57, 867.24pt x 578.16pt>
+File: images//epoch_v_batch_sigmoid.png Graphic file (type png)
+<use images//epoch_v_batch_sigmoid.png>
+Package pdftex.def Info: images//epoch_v_batch_sigmoid.png  used on input line 
+347.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+<images//epoch_v_batch_relu.png, id=58, 867.24pt x 578.16pt>
+File: images//epoch_v_batch_relu.png Graphic file (type png)
+<use images//epoch_v_batch_relu.png>
+Package pdftex.def Info: images//epoch_v_batch_relu.png  used on input line 348
+.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+<images//eta_v_lmd_sigmoid.png, id=59, 867.24pt x 578.16pt>
+File: images//eta_v_lmd_sigmoid.png Graphic file (type png)
+<use images//eta_v_lmd_sigmoid.png>
+Package pdftex.def Info: images//eta_v_lmd_sigmoid.png  used on input line 349.
+
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+<images//eta_v_lmd_relu.png, id=60, 867.24pt x 578.16pt>
+File: images//eta_v_lmd_relu.png Graphic file (type png)
+<use images//eta_v_lmd_relu.png>
+Package pdftex.def Info: images//eta_v_lmd_relu.png  used on input line 350.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+<images//layer_v_batch_sigmoid.png, id=61, 867.24pt x 578.16pt>
+File: images//layer_v_batch_sigmoid.png Graphic file (type png)
+<use images//layer_v_batch_sigmoid.png>
+Package pdftex.def Info: images//layer_v_batch_sigmoid.png  used on input line 
+351.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+<images//layer_v_batch_relu.png, id=62, 867.24pt x 578.16pt>
+File: images//layer_v_batch_relu.png Graphic file (type png)
+<use images//layer_v_batch_relu.png>
+Package pdftex.def Info: images//layer_v_batch_relu.png  used on input line 352
+.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--355
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./images//three_hidden_10_ReLU.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12 <./images//epoch_v_batch_sigmoid.png> <./images//epoch_v_batch_relu.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <./images//eta_v_lmd_sigmoid.png> <./images//eta_v_lmd_relu.png>] [14 <./i
+mages//layer_v_batch_sigmoid.png> <./images//layer_v_batch_relu.png>] (Report.a
+ux) ) 
 Here is how much of TeX's memory you used:
- 14405 strings out of 492484
- 260221 string characters out of 3121602
- 322277 words of memory out of 3000000
- 18672 multiletter control sequences out of 15000+200000
- 540794 words of font info for 57 fonts, out of 3000000 for 9000
+ 6605 strings out of 478907
+ 95422 string characters out of 2851891
+ 418585 words of memory out of 3000000
+ 24408 multiletter control sequences out of 15000+600000
+ 413103 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,6n,71p,954b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmbx12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/espen/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/espen/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/
-espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pf
-b><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmr17.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/espen/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/espen/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/espen/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Report.pdf (6 pages, 202920 bytes).
+ 71i,6n,81p,954b,1001s stack positions out of 5000i,500n,10000p,200000b,80000s
+<C:/Users/espen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmex10.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/espen/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/espen/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/espen/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/espen/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Use
+rs/espen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Users/espen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mti12.pfb><C:/Users/espen/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmtt12.pfb>
+Output written on Report.pdf (14 pages, 668098 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
+ 129 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

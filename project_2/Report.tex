@@ -6,7 +6,20 @@
 \usepackage[margin=2cm,nohead]{geometry}
 \usepackage{xcolor}
 \usepackage{amsmath,mathtools}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{listings}
 \graphicspath{ {images/} }
+
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
 \begin{document}
 \title{FYS-STK 4155 Project 2 }
 \author{Espen Lønes}
@@ -14,14 +27,7 @@
 \maketitle
 In this project we expand on project 1 by using new machine learning methods.
 These include Stochastic Gradient Descent (SGD), feed forward neural network (FFNN) with back-propagation and logistic regression using the neural network.
-We will use these methods on data generated from the Franke function or the Wisconsin Breast cancer data set.
-We use mean squared error (MSE) and cross-entropy as cost functions.
-\ \\
-\ \\
-(insert results)
-\ \\
-\ \\
-\section{Introduction}
+We will use these methods on data generated from the Franke function or the Wisconsin Breast cancer data set.\\
 \section{Theory}
 \textbf{Gradient descent}\\
 \ \\
@@ -140,24 +146,13 @@ When categorizing on the cancer data we look at probabilities. As we are no long
 $$
 C(\hat{w}) = -log P(D|\hat{w})
 $$  
-With
-$$
-P(D|\hat{w}) = \prod_{i=0}^n \prod_{c=0}^{C-1}(P(y_{ic} = 1))^{y_{ic}}
-$$
-and
-$$
-P(y_{ic} = 1|x_i,\hat{w}) = \frac{exp((a_i^{hidden})^T \hat{w_c})}
-{\sum_{c' = 0}^{C-1} exp((a_i^{hidden})^T \hat{w_{c'}})}
-$$
-Here $D$ is our data and $w$ the weights.\\
-\colorbox{yellow}{softmax?}\\
 \ \\
 \ \\
 \textbf{Logistic regression}\\
 \ \\
 Logistic regression is a special use case of neural networks often used when doing binary classification, like we do on the cancer data. It may also be used with multiple categories. It uses the logistic function as activation function and cross entropy as cost function. It also has no hidden layers.
 This method does not suffer from the same problems that general neural networks suffer from. Like to small or to large gradients. But its simplicity also limits its usefulness. Like leaning the fine details of a dataset, especially feature rich data.\\
-\ \\
+\newpage
 \ \\
 \textbf{Backpropagation}\\
 \ \\
@@ -209,5 +204,157 @@ $$
 $$
 \ \\
 \section{Method}
-
+\textbf{SGD}\\
+\ \\
+Below is the pseudo code for the SGD. When making the mini-batches we have an array containing the indexes of the data. We then shuffle this and use it to index the data making the data shuffled. Then the data is spilt into the given number of mini-batches.\\
+\begin{verbatim}
+1. Initialize the weights, learning rate and momentum
+2. v = 0
+3. for epoch in epochs do
+4.     Randomly divide data into given number of mini-batches
+5.     for mini-batch in mini-batches do
+6.         v <- gamma*v + eta*gratient_cost_function
+7.         w <- w - v
+8.	   end for
+9. end for	   
+\end{verbatim}
+\ \\
+\textbf{Neural Network}\\
+\ \\
+For the neural network two classes are used. A neural network is an instance of the NN class and a layers are instances of the Layer class. The layer elements are appended to a list as they created (front to back). This makes it easier to change the number of hidden layers, their activation functions and the number of nodes in a given layer.  
+\newpage
+\ \\
+\textbf{Backpropagation}\\
+\ \\
+When doing the backpropagation it is easiest to use matrix operations. Rewriting the backpropagation equations for element-wise multiplication using the Hadamard product ($\circ$) we get.
+$$
+\delta^L = \nabla_a C \circ \sigma'(z^L)
+$$
+$$
+\delta^l = \delta^{l+1} (w^{l+1})^T \circ \sigma'(z^L)
+$$
+$$
+\frac{\partial C}{\partial w_{jk}^l} = (a_k^{l-1})^T \delta_j^l
+$$
+$$
+\frac{\partial C}{\partial b_j^l} = \delta_j^l
+$$
+Pseudo code for the backpropagation.\\
+\begin{lstlisting}
+1. Initialize network and do feed forward.
+2. Compute error of output layer
+3. $\delta^L = \nabla_a C \circ \sigma'(z^L)$
+4. for l in L-1 : 1 do
+5. $\delta^l = \delta^{l+1} (w^{l+1})^T \circ \sigma'(z^L)$
+6. $w^l \leftarrow w^l - \eta(a^{l-1})^T \delta^l - 2 \eta \lambda w^l$
+7. $b^l \leftarrow b^l - \eta \delta^l$
+8. end for
+9. $\delta^0 = \delta^2(w^1)^T \circ \sigma(z^0)$
+10. $w^0 \leftarrow w^0 - \eta(X^T \delta^0) - 2 \eta \lambda w^0$
+11. $b^0 \leftarrow b^0 - \eta \delta^0$
+\end{lstlisting}
+\ \\
+\textbf{Dataset}\\
+\ \\
+\ \\
+\textbf{Accuracy}\\
+\ \\
+To know if out trained model is good or not we need a measure for how goof the model is. The metric we use is the accuracy score, which counts the number of correct classifications in relation to the number of observations to classify.
+$$
+\textit{Accuracy} = \frac{\sum_{i=0}^n I(t_i = y_i)}{n} 
+$$
+Where $I$ is the indicator function for binary classification.\\
+\newpage
+\section{Results / Discussion}
+\textbf{SGD for OLS and Ridge}\\
+\ \\
+After running tests to determine best hyper-parameters, these where found to be the best for both OLS and Ridge:\\
+$\eta = 0.01$\\
+$\gamma = 0.7$\\
+$\textit{number of epochs} = 1500$\\
+$\textit{Batch size} = 8$\\
+And ridges regularization parameter:\\ 
+$\lambda = 0.01$\\
+\\
+(For the testing of hyper-parameters see 'run\_sgd.py')\\
+Using these values on the test data we got these values:
+\begin{verbatim}
+OLS Best:
+MSE: 0.1477030399345097
+Best Ridge:
+MSE: 0.18235018557921942
+\end{verbatim}
+This shows that OLS outperforms Ridge in this task, meaning the actual best $\lambda$ value should be 0.\\
+\ \\
+\ \\
+\textbf{Neural network on Franke data}\\
+\ \\
+(see 'run\_NN.py' for source code)\\
+\ \\
+Tested with sigmoid, ReLU and LeakyReLU in the hidden layers, with Identity at the output layer.\\
+Had problems when Using LeakyLeLU in the hidden layers so i have no data for this.\\
+\ \\
+First the different activation functions for used in the hidden layers where tested with a variety of hidden layer combinations.\\
+First, one hidden layer with 50 nodes:\\
+\includegraphics[scale=0.5]{"one_hidden_50_sigmoid"}\\
+\includegraphics[scale=0.5]{"one_hidden_50_ReLU"}
+\begin{verbatim}
+One layer with 50 nodes
+MSE OLS:  0.09455542520459001
+MSE before training (Sigmoid) :  1.6971725263855568
+MSE train (Sigmoid): 0.3977370923679221
+MSE test (Sigmoid): 0.2932577278959031
+MSE before training (ReLU) :  60.94677831588465
+MSE train (ReLU): 0.31137113354947654
+MSE test (ReLU): 0.2559470451224469
+\end{verbatim}
+We see that ReLU preforms slightly better than Sigmoid, but both much worse than OLS.\\
+\ \\
+Then for two layers with 20 nodes each.\\
+\includegraphics[scale=0.5]{"two_hidden_20_sigmoid"}\\
+\includegraphics[scale=0.5]{"two_hidden_20_ReLU"}
+\begin{verbatim}
+Two layers with 20 nodes
+MSE OLS:  0.09455542520459001
+MSE before training (Sigmoid) :  10.84097261409264
+MSE train (Sigmoid): 0.560181226948035
+MSE test (Sigmoid): 0.5072626231608858
+MSE before training (ReLU) :  1832.6634227775553
+MSE train (ReLU): 0.30307922577730323
+MSE test (ReLU): 0.23704229828658846
+\end{verbatim}
+OLS and ReLU preforms about the same as for the previous case. But Sigmoid preforms much worse.\\
+\ \\
+Lastly, three layers with 10 nodes each.\\
+\includegraphics[scale=0.5]{"three_hidden_10_sigmoid"}\\
+\includegraphics[scale=0.5]{"three_hidden_10_ReLU"}
+\begin{verbatim}
+three layers with 20 nodes
+MSE OLS:  0.09455542520459001
+MSE before training (Sigmoid) :  2.1879519921608233
+MSE train (Sigmoid): 1.0047682434994045
+MSE test (Sigmoid): 1.1098615334781325
+MSE before training (ReLU) :  53.92304399545829
+MSE train (ReLU): 0.2885547102020297
+MSE test (ReLU): 0.3608360554583901
+\end{verbatim}
+Now ReLU is a little worse, Sigmoid even worse than last time again and OLS still the same.\\
+\ \\
+From these observations we see that if a neural network is to be used. Of the tested variants, one layer with 50 nodes was best.\\
+\ \\
+These runs where preformed with, 32 mini-batches, $\eta = 0.001$ and up to 300 epochs.\\
+These values where chosen on grounds of the flowing results.\\
+\includegraphics[scale=0.5]{"epoch_v_batch_sigmoid"}\\
+\includegraphics[scale=0.5]{"epoch_v_batch_relu"}\\
+\includegraphics[scale=0.5]{"eta_v_lmd_sigmoid"}\\
+\includegraphics[scale=0.5]{"eta_v_lmd_relu"}\\
+\includegraphics[scale=0.5]{"layer_v_batch_sigmoid"}\\
+\includegraphics[scale=0.5]{"layer_v_batch_relu"}\\
+\ \\
+I did unfortunately not have the time to implement the use of the cancer data. Though much of the code is done (make\_dc\_data\_ready\_for\_NN adn rain\_NN\_classifier in analasis\_functions.py.)
 \end{document}
+
+
+
+
+
