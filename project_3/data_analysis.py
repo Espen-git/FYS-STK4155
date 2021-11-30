@@ -14,6 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import r2_score
+from sklearn.metrics import balanced_accuracy_score
 
 def correlation_matrix(X, plot=True):
     """
@@ -45,9 +46,18 @@ def scores(y_test, y_pred):
     print(f"R2: {r2_score(y_test, y_pred)}")
     print(f"MAD: {mean_absolute_error(y_test, y_pred)}")
 
-def target_histogram(y):
-    bins = max(y) - min(y)
-    hist = y.hist(bins=bins)
+def accuracy(y_test, y_pred):
+    y_pred = np.round(y_pred)
+    res = y_pred==y_test
+    print(np.sum(res) / len(y_test))
+
+
+def target_histogram(y, title):
+    bins = list(range(min(y), max(y)+2))
+    hist = plt.hist(y, bins=bins, align='left')
+    plt.xlabel('Sensory preference')
+    plt.ylabel('Number of samples')
+    plt.title(title)
     plt.show()
 
 white, red = load_data()
@@ -60,10 +70,27 @@ col_names = X_w.columns
 #print("-"*50)
 #print("White wine")
 #feature_table(X_w)
-target_histogram(y_r)
-target_histogram(y_w)
 
-train = False
+#target_histogram(y_r, 'Red wine')
+#target_histogram(y_w, 'White wine')
+
+#cov = X_w.cov()
+#val, vec = np.linalg.eig(cov)
+# 4 3 5 6 2
+#res = np.zeros(vec.shape)
+#for i in range(len(val)):
+#    res[i] = vec[i] * val[i]
+#res = np.sum(res, axis=0)
+#print(res) # 4 3 8 (6 5)  
+#print(col_names)
+
+# remove free sulphur and density and alcohol
+#features_w = ['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar', 'chlorides', 'total sulfur dioxide', 'pH', 'sulphates']
+#selected_w = X_w[features_w]
+#print(selected_w)
+#X_w = selected_w
+
+train = True
 if train:
     r = 30 # random state seed
     X_train, X_test, y_train, y_test = train_test_split(X_w, y_w, test_size=0.3, random_state=r)
@@ -80,7 +107,8 @@ if train:
     #lr_y_pred = lr.predict(X_test_scaled)
     #sgd_y_pred = sgd.predict(X_test_scaled)
     print("MLP:")
-    scores(y_test, mlp_y_pred)
+    accuracy(y_test, mlp_y_pred)
+    #scores(y_test, mlp_y_pred)
     """
     SGD og LR dåligere og ca. like
     print("LR:")
