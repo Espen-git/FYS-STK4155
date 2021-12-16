@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsfonts}
+\usepackage{multicol}
 \usepackage{hyperref}
 \usepackage[margin=2cm,nohead]{geometry}
 \usepackage{physics}
@@ -19,11 +20,12 @@
 \ \\
 \textbf{Abstract}\\
 \ \\
-Machine learning regression applied to vinho verde wine samples. The datasets consists of (4898) white and (1599) red wine samples with 11 analytical tests as features. Feature analysis and selection was also done.
+Machine learning regression applied to vinho verde wine samples. The datasets consists of (4898) white and (1599) red wine samples with 11 analytical tests as features. Feature analysis and selection was also done using forward and backward sequential selection. The three models performed adequately, with MSE errors of 0.59, 0.43 (Linear regression - white, red), 0.59, 0.42 (SGD - white, red) and 0.50, 0.47 (Multi layer preceptron - white, red).\\
 \section{Introduction}
 Portugal is in the top 10 worldwide when it comes to wine production and export. Being responsible for    3.17\% of the worlds wine in 2005 \cite{FAO}. Export of its vinho verde wine has increased greatly in the past years \cite{CVRVV}. In response to this growth the industry has invested in new technologies used in for production and sales purposes. In this context certification and quality assessment is vital. As a part of these processes the wine is often assessed using physiochemical and sensory tests \cite{Ebeler}. The test preformed include measures of i.a. density, alcohol, pH. The sensory tests rely on a human expert. The relation between the sensory and analytical data is complex and not well understood \cite{PvS}. Making wine quality regression/classification a difficult task.\\
 \ \\
 In this project i attempt to use different ML regression methods to predict the sensory (expert) rating from the analytical measurements like atemplted by P. Cortez et al. \cite{Citation paper}. As mentioned in their paper if classification/regression is possible one could extend this to the consumers. By recommending wines based on their personal sensory preferences.\\
+\newpage
 \ \\
 \section{Theory}
 \textbf{Linear regression}\\
@@ -47,7 +49,7 @@ $$
 Where $\eta_k$ is the step length commonly names learning rate. The point $w$ corresponds to a set of values we call weights.\\
 \ \\
 As previously stated our goal is to reach the global minimum. But depending on cost function choice, leaning rate, initial guess and problem complexity we may (and usually will) end up in a local minimum instead. A dilemma with learning rate is that having to small a learning rate makes the training slow as we need many iterations until we reach a minimum. On the other hand if it is to large we will probably overshoot the minimum. A popular method for mitigating this is by having a decreasing learning rate. With the idea that we move fast towards a minimum, as we get close the learning rate decreases making it less likely we overshoot the minimum.\\
-\ \\
+\newpage
 \ \\
 \textbf{Stochastic gradient descent}\\
 \ \\
@@ -69,7 +71,7 @@ High $\gamma$ values gives large acceleration. With $\gamma = 0$ being ordinary 
 A neural network consists of layers of nodes, one input, one output and a any number of hidden layers (may have no hidden layers).
 Each layer has a set of neurons/nodes, for the input layer these are the input neurons where the number of neurons are determined by our problem and our representation of it (the features). The output neurons represent our solution/answer.\\
 \includegraphics[scale=0.5]{"NN"}\\
-\ \\
+\newpage
 \ \\
 \textbf{Feed forward neural network (FFNN)}\\ 
 \ \\
@@ -93,7 +95,7 @@ $$
 Plot of the logistic function.\\
 \ \\
 Its advantage lies in that it's values fall between 0 and 1. This is very useful when the output is a probability. Unfortunately the logistic function can halt the NN as the derivative is often very close to zero. We now often use functions like ReLU and leaky ReLU instead.\\
-\ \\
+\newpage
 \ \\
 The ReLU (rectified linear unit) function is variant of the sigmoid.\\
 \[
@@ -151,7 +153,18 @@ $$
 $$
 \ \\
 \ \\
-\textbf{R2???}\\
+The R2 score is the proportion of the variation of the independent variable, that is predicted from the independent variables.\\
+If $\tilde{y}$ is the mean of the data. And:
+$$
+SS_{res} = sum_i (y_i - f_i)^2 
+$$
+$$
+SS_{tot} = sum_i (y_i - \tilde{y})^2
+$$
+Then.
+$$
+R^2 = 1 - \frac{SS_{res}}{SS_{tot}}
+$$
 \ \\
 \textbf{Backpropagation}\\
 \ \\
@@ -201,7 +214,7 @@ Having gradient:
 $$
 \nabla C(\theta) = \nabla L(\theta) + 2 \lambda w
 $$
-\ \\
+\newpage
 \ \\
 \textbf{Confusion matrix}\\
 \ \\
@@ -212,9 +225,121 @@ It works for binary and multi-class problems by plotting how many of a given cla
 \ \\
 Here we also see three other metrics, sensitivity, specificity and accuracy. Which each provide a different look on how good our model is for different types of error.\\
 \section{Method}
+\textbf{Feature Selection}\\
+\ \\
+I used sequential feature selection for the feature selection. This is done by (for the forward version) starting with no features and selecting the one giving the best cross-validation score. This is repeated until the desired amount of features is reached. For the backwards method we start with all features and remove one at a time instead. Both forward and backward was used to do feature selection. Sckitlearns SequentialFeatureSelector method was used\\
+\ \\
+\ \\
+\textbf{ML models}\\
+\ \\
+After feature selection i trained tree different models on the data. Linear regression, SGD regression and multi layer preseptron (MLP) regression. All models used their sckitlearns versions/implementations. The models hyperparameters where tweaked using the training data.\\
+\ \\
+\ \\
 
 \section{Results}
+Correlation matrices for white wine (left) and red wine (right).\\
+\begin{multicols}{2}
+	\includegraphics[scale=0.65]{"corr_white"}\\
+	\includegraphics[scale=0.65]{"corr_red"}\\
+\end{multicols}
+We see that both red and white wine has about 0.6 in correlation between free and total sulphur dioxide. Not so surprising as the free is probably a big part of the total.\\
+The rest of the stronger correlations are different between the two wine types.\\
+For white wine there is about 0.7 in correlation between density-alcohol and density-residual sugar.
+Also not surprising as sugar is denser than water and alcohol is less dense than water. But still a little surprising is that the correlation is not noticeable in the red wine.\\
+For the red wine, the largest correlations are between, fixed acidity-pH, fixed acidity-density and fixed acidity- citric acid.\\
+We see from the correlation matrices that we probably need many of the features for the ML model to be trained sufficiently, as many of the features have low correlation. But some of the higher correlated combinations may be redundant. We also see from the difference that the two wine types may need a different feature combinations.\\
+\newpage
+\ \\
+Target/label distributions:\\
+\begin{multicols}{2}
+	\includegraphics[scale=0.6]{"histogram_white"}\\
+	\includegraphics[scale=0.6]{"histogram_red"}\\
+\end{multicols}
+There is a large difference in the label distribution. With a low (or none at all) amount of samples for both very good and very bad wine. This will make it difficult to train the model on the types of wine with low sample numbers. Wines with 1,2,9 or 10 as score if collected and used later to test the model will probably be miss labelled as such wins where not in the training sample.\\
+\ \\
+\ \\
+Minimum, maximum and mean of the different features.\\
+\begin{verbatim}
+Red wine
+                          min      max       mean
+fixed acidity             4.6     15.9    8.31964
+volatile acidity         0.12     1.58   0.527821
+citric acid                 0        1   0.270976
+residual sugar            0.9     15.5    2.53881
+chlorides               0.012    0.611  0.0874665
+free sulfur dioxide         1       72    15.8749
+total sulfur dioxide        6      289    46.4678
+density               0.99007  1.00369   0.996747
+pH                       2.74     4.01    3.31111
+sulphates                0.33        2   0.658149
+alcohol                   8.4     14.9     10.423
+\end{verbatim}
+\newpage
+\ \\
+\begin{verbatim}
+White wine
+                          min      max       mean
+fixed acidity             3.8     14.2    6.85479
+volatile acidity         0.08      1.1   0.278241
+citric acid                 0     1.66   0.334192
+residual sugar            0.6     65.8    6.39141
+chlorides               0.009    0.346  0.0457724
+free sulfur dioxide         2      289    35.3081
+total sulfur dioxide        9      440    138.361
+density               0.98711  1.03898   0.994027
+pH                       2.72     3.82    3.18827
+sulphates                0.22     1.08   0.489847
+alcohol                     8     14.2    10.5143
+\end{verbatim}
+From this we see there is a large scale difference between the different features. Scaling the data is then probably a good idea to avoid some features being overrepresented because of their scale. I chose to use sklearn standard scaler.\\
+\newpage
+\ \\
+The forward and backward sequential feature selection resulted in the flowing plots.\\
+For white wine:\\
+\includegraphics[scale=0.75]{"forward_v_backward_white"}\\
+For red wine:\\
+\includegraphics[scale=0.75]{"forward_v_backward_red"}\\
+\ \\
+We see that for this type of feature selection it finds that the combination of all features is optimal.\\
+Using this in the different models I get these results.\\
+\ \\
+\begin{multicols}{2}
+White wine:\\
+\begin{verbatim}
+LR:
+MSE: 0.5889700125908756
+R2: 0.24824729577620164
+MAD: 0.5964982518058798
+SGD:
+MSE: 0.588102748404873
+R2: 0.24935425909040476
+MAD: 0.5955205859534801
+MLP:
+MSE: 0.5017647241025605
+R2: 0.35955484971315554
+MAD: 0.5482520202440326
+\end{verbatim}
+\ \\
+Red wine:
+\begin{verbatim}
+LR:
+MSE: 0.4267989097992499
+R2: 0.3653383966842185
+MAD: 0.506160827121204
+SGD:
+MSE: 0.4247741608117259
+R2: 0.3683492535754378
+MAD: 0.505201285358217
+MLP:
+MSE: 0.4764476462328574
+R2: 0.2915093733571037
+MAD: 0.4914478390771567
+\end{verbatim}
+\end{multicols}
 \section{Conclusion/Discussion}
+There where some differences between the different methods, but not a lot. The MLP had the best results for white wine. While for the red wine MLP was worst, with LR and SGD being equally good. This is surprising as even though none of the models had extremely impressive results. I would have expected the best model for both sets to be the same. It is apparent that more work need to be done to test whether or not the two datasets need different models. In addition further hyper parameter adjustment or testing of more models to achieve higher scores.\\
+\newpage
+\ \\ 
 \begin{thebibliography}{9}
 \bibitem{UCI}
 \url{https://archive.ics.uci.edu/ml/datasets/Wine+Quality}
@@ -250,5 +375,8 @@ A. Legin, A. Rudnitskaya, L. Luvova, Y. Vlasov, C. Natale, A. D'Amico
 Evaluation of Italian wine by the electronic tongue: recognition, quantitative analysis and correlation with human sensory perception
 Analytica Chimica Acta, 484 (1) (2003), pp. 33-34
 \url{https://www.scopus.com/record/display.uri?eid=2-s2.0-0038066312&origin=inward&txGid=cdf7d5eb8afe889f892d9b354a7e1317}
+
+\bibitem{p2}
+\url{https://github.com/Espen-git/FYS-STK4155/blob/master/project_2/Report.pdf}
 \end{thebibliography}
 \end{document}
